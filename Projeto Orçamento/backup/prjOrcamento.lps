@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="prjOrcamento.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="77" Y="28"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucadmodelo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FCadModelo"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadModelo"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="29" Y="15"/>
+        <UsageCount Value="20"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucadclientes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FCadModelo1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadClientes"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="5" Y="7"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="dm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DataModule1"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="9" Y="19"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="4">
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="15" Column="25"/>
+      </Position>
+      <Position>
+        <Filename Value="dm.pas"/>
+        <Caret Line="15" Column="32"/>
+      </Position>
+      <Position>
+        <Filename Value="dm.pas"/>
+        <Caret Line="16" Column="57"/>
+      </Position>
+      <Position>
+        <Filename Value="dm.pas"/>
+        <Caret Line="15" TopLine="9"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="7" Column="5"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

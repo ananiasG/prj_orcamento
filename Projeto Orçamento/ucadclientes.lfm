@@ -1,0 +1,80 @@
+inherited FCadModelo1: TFCadModelo1
+  inherited pcModelo: TPageControl
+    inherited pgPesquisar: TTabSheet
+      inherited Panel1: TPanel
+        Height = 398
+        ClientHeight = 398
+        inherited DBGrid1: TDBGrid
+          Left = 11
+          Height = 333
+          Width = 939
+          AlternateColor = clMenuBar
+          AutoAdvance = aaRightUp
+          AutoFillColumns = True
+          BorderSpacing.Left = 10
+          BorderSpacing.Right = 10
+          Columns = <          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'ID'
+              Width = 227
+              FieldName = 'id'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Usuário'
+              Width = 227
+              FieldName = 'usuario'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Nome Completo'
+              Width = 226
+              FieldName = 'nome_completo'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Senha'
+              Width = 226
+              FieldName = 'senha'
+            end>
+          DataSource = dsClientes
+          Font.Style = [fsItalic]
+          ParentFont = False
+          ReadOnly = True
+          TitleFont.Color = clBlack
+        end
+      end
+      inherited Panel5: TPanel
+        Height = 47
+        Top = 432
+        ClientHeight = 47
+        inherited btSair: TBitBtn
+          Anchors = [akTop, akRight, akBottom]
+        end
+      end
+    end
+  end
+  object qryClientes: TZQuery[1]
+    Connection = DataModule1.ZConnection1
+    UpdateObject = updtClientes
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM USUARIOS'
+      ''
+    )
+    Params = <>
+    Left = 860
+    Top = 56
+  end
+  object updtClientes: TZUpdateSQL[2]
+    UseSequenceFieldForRefreshSQL = False
+    Left = 941
+    Top = 56
+  end
+  object dsClientes: TDataSource[3]
+    DataSet = qryClientes
+    Left = 784
+    Top = 56
+  end
+end
