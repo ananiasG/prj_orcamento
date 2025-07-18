@@ -1,41 +1,89 @@
 inherited FCadModelo1: TFCadModelo1
+  Height = 555
+  Width = 1095
+  ClientHeight = 555
+  ClientWidth = 1095
+  Constraints.MinHeight = 520
+  Constraints.MinWidth = 500
+  OnCreate = FormCreate
   inherited pcModelo: TPageControl
+    Height = 555
+    Width = 1095
     inherited pgPesquisar: TTabSheet
+      ClientHeight = 524
+      ClientWidth = 1087
       inherited Panel1: TPanel
-        Height = 398
-        ClientHeight = 398
+        Height = 438
+        Width = 1027
+        ClientHeight = 438
+        ClientWidth = 1027
+        inherited Panel2: TPanel
+          Width = 1015
+          ClientWidth = 1015
+          inherited LabeledEdit1: TLabeledEdit
+            Height = 26
+            EditLabel.Height = 26
+            Font.Style = []
+            OnChange = LabeledEdit1Change
+          end
+          object cbOptnPesquisa: TComboBox[1]
+            Cursor = crHandPoint
+            Left = 480
+            Height = 25
+            Top = 9
+            Width = 200
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            ItemHeight = 17
+            ItemIndex = 1
+            Items.Strings = (
+              'ID'
+              'Nome Completo'
+              'Usuário'
+              'Senha'
+            )
+            ParentFont = False
+            TabOrder = 1
+            Text = 'Nome Completo'
+            OnChange = cbOptnPesquisaChange
+          end
+        end
         inherited DBGrid1: TDBGrid
           Left = 11
-          Height = 333
-          Width = 939
+          Height = 368
+          Width = 1005
           AlternateColor = clMenuBar
           AutoAdvance = aaRightUp
           AutoFillColumns = True
           BorderSpacing.Left = 10
           BorderSpacing.Right = 10
+          Color = clWhite
           Columns = <          
             item
               PickList.Strings = (              )
               Title.Caption = 'ID'
-              Width = 227
+              Width = 243
               FieldName = 'id'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'Usuário'
-              Width = 227
+              Width = 243
               FieldName = 'usuario'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'Nome Completo'
-              Width = 226
+              Width = 243
               FieldName = 'nome_completo'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'Senha'
-              Width = 226
+              Width = 243
               FieldName = 'senha'
             end>
           DataSource = dsClientes
@@ -43,14 +91,144 @@ inherited FCadModelo1: TFCadModelo1
           ParentFont = False
           ReadOnly = True
           TitleFont.Color = clBlack
+          TitleFont.Style = [fsItalic]
+          OnDblClick = DBGrid1DblClick
         end
       end
       inherited Panel5: TPanel
         Height = 47
-        Top = 432
+        Top = 472
+        Width = 1077
         ClientHeight = 47
+        ClientWidth = 1077
+        Color = clBtnFace
+        ParentBackground = False
+        ParentColor = False
+        inherited btInserir: TBitBtn
+          Cursor = crHandPoint
+          Color = clMenu
+          OnClick = btInserirClick
+        end
         inherited btSair: TBitBtn
+          Cursor = crHandPoint
+          Left = 962
           Anchors = [akTop, akRight, akBottom]
+          OnClick = btSairClick
+        end
+      end
+    end
+    inherited pgCadastrar: TTabSheet
+      ClientHeight = 524
+      ClientWidth = 1087
+      inherited Panel3: TPanel
+        Top = 469
+        Width = 1077
+        ClientWidth = 1077
+        inherited Panel4: TPanel
+          inherited BitBtn2: TBitBtn
+            OnClick = BitBtn2Click
+          end
+          inherited BitBtn3: TBitBtn
+            OnClick = BitBtn3Click
+          end
+          inherited BitBtn4: TBitBtn
+            OnClick = BitBtn4Click
+          end
+        end
+        inherited btExcluir: TBitBtn
+          OnClick = btExcluirClick
+        end
+      end
+      object Panel6: TPanel[1]
+        Left = 377
+        Height = 328
+        Top = 48
+        Width = 330
+        Anchors = []
+        ClientHeight = 328
+        ClientWidth = 330
+        Color = clMenu
+        Constraints.MaxHeight = 380
+        Constraints.MaxWidth = 330
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 1
+        object edtUsuario: TDBEdit
+          Left = 44
+          Height = 25
+          Top = 60
+          Width = 240
+          DataField = 'usuario'
+          DataSource = dsClientes
+          Anchors = []
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 30
+          ParentFont = False
+          TabOrder = 0
+        end
+        object edtNomeCompleto: TDBEdit
+          Left = 44
+          Height = 25
+          Top = 143
+          Width = 240
+          DataField = 'nome_completo'
+          DataSource = dsClientes
+          Anchors = []
+          DoubleBuffered = True
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 60
+          ParentDoubleBuffered = False
+          ParentFont = False
+          TabOrder = 1
+        end
+        object edtSenha: TDBEdit
+          Left = 44
+          Height = 25
+          Top = 223
+          Width = 240
+          DataField = 'senha'
+          DataSource = dsClientes
+          Anchors = []
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 50
+          ParentFont = False
+          TabOrder = 2
+        end
+        object Label1: TLabel
+          Left = 134
+          Height = 18
+          Top = 37
+          Width = 55
+          Anchors = []
+          Caption = 'Usuário'
+        end
+        object Label2: TLabel
+          Left = 108
+          Height = 18
+          Top = 120
+          Width = 113
+          Anchors = []
+          Caption = 'Nome Completo'
+        end
+        object Label3: TLabel
+          Left = 141
+          Height = 18
+          Top = 200
+          Width = 45
+          Anchors = []
+          Caption = 'Senha'
         end
       end
     end
@@ -60,21 +238,55 @@ inherited FCadModelo1: TFCadModelo1
     UpdateObject = updtClientes
     Active = True
     SQL.Strings = (
-      'SELECT * FROM USUARIOS'
+      'SELECT * FROM USUARIOS ORDER BY ID ASC'
+      ''
+      ''
       ''
     )
     Params = <>
-    Left = 860
-    Top = 56
+    Left = 941
+    Top = 120
   end
   object updtClientes: TZUpdateSQL[2]
+    DeleteSQL.Strings = (
+      'DELETE FROM USUARIOS'
+      'WHERE'
+      '  ((USUARIOS.id IS NULL AND :OLD_id IS NULL) OR (USUARIOS.id = :OLD_id))'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO USUARIOS'
+      '  (usuario, nome_completo, senha)'
+      'VALUES'
+      '  (:usuario, :nome_completo, :senha)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE USUARIOS SET'
+      '  usuario = :usuario,'
+      '  nome_completo = :nome_completo,'
+      '  senha = :senha'
+      'WHERE'
+      '  ((USUARIOS.id IS NULL AND :OLD_id IS NULL) OR (USUARIOS.id = :OLD_id))'
+    )
     UseSequenceFieldForRefreshSQL = False
     Left = 941
     Top = 56
+    ParamData = <    
+      item
+        Name = 'usuario'
+      end    
+      item
+        Name = 'nome_completo'
+      end    
+      item
+        Name = 'senha'
+      end    
+      item
+        Name = 'OLD_id'
+      end>
   end
   object dsClientes: TDataSource[3]
     DataSet = qryClientes
-    Left = 784
-    Top = 56
+    Left = 941
+    Top = 184
   end
 end

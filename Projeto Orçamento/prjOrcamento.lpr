@@ -23,6 +23,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TFCadModelo1, FCadModelo1);
+  Application.CreateForm(TFCadModelo, FCadModelo);
   Application.Run;
 end.
 
