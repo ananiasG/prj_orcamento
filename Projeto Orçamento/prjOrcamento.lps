@@ -8,20 +8,24 @@
       <Unit>
         <Filename Value="prjOrcamento.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="77" Y="28"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="4"/>
+        <CursorPos X="51" Y="26"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="ucadmodelo.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FCadModelo"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadModelo"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="29" Y="15"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="4"/>
+        <CursorPos X="22" Y="16"/>
+        <UsageCount Value="27"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="ucadclientes.pas"/>
@@ -31,8 +35,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadClientes"/>
         <IsVisibleTab Value="True"/>
-        <CursorPos X="5" Y="7"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="62"/>
+        <CursorPos X="33" Y="117"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -40,34 +45,138 @@
         <Filename Value="dm.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DataModule1"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <EditorIndex Value="1"/>
-        <CursorPos X="9" Y="19"/>
-        <UsageCount Value="20"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="8"/>
+        <CursorPos X="29" Y="24"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="ucadmodelo.lfm"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="169"/>
+        <CursorPos X="77" Y="238"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="4">
+    <JumpHistory HistoryIndex="27">
       <Position>
         <Filename Value="ucadclientes.pas"/>
-        <Caret Line="15" Column="25"/>
-      </Position>
-      <Position>
-        <Filename Value="dm.pas"/>
-        <Caret Line="15" Column="32"/>
-      </Position>
-      <Position>
-        <Filename Value="dm.pas"/>
-        <Caret Line="16" Column="57"/>
-      </Position>
-      <Position>
-        <Filename Value="dm.pas"/>
-        <Caret Line="15" TopLine="9"/>
+        <Caret Line="104" Column="38" TopLine="79"/>
       </Position>
       <Position>
         <Filename Value="ucadclientes.pas"/>
-        <Caret Line="7" Column="5"/>
+        <Caret Line="95" Column="5" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="34" Column="48" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="92" Column="89" TopLine="69"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="90" Column="112" TopLine="72"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="88" Column="6" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="111" Column="57" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="119" Column="10" TopLine="95"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="109" Column="23" TopLine="94"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="116" Column="87" TopLine="100"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="117" Column="38" TopLine="100"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="112" Column="8" TopLine="100"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="89" Column="3" TopLine="87"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="110" Column="25" TopLine="95"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="111" Column="3" TopLine="95"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="15" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="47" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="114" Column="32" TopLine="99"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="16" Column="10" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="17" Column="10" TopLine="10"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="16" Column="23"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadclientes.pas"/>
+        <Caret Line="114" Column="32" TopLine="99"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.lfm"/>
+        <Caret Line="677" Column="6" TopLine="648"/>
+      </Position>
+      <Position>
+        <Filename Value="prjOrcamento.lpr"/>
+        <Caret Line="25" Column="28"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="17" Column="22"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.pas"/>
+        <Caret Line="16" Column="22"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.lfm"/>
+        <Caret Line="60" Column="65" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="ucadmodelo.lfm"/>
+        <Caret Line="588" Column="59" TopLine="558"/>
       </Position>
     </JumpHistory>
     <RunParams>

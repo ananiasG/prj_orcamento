@@ -13,7 +13,6 @@ type
   { TFCadModelo }
 
   TFCadModelo = class(TForm)
-    BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     BitBtn4: TBitBtn;
@@ -30,7 +29,6 @@ type
     pcModelo: TPageControl;
     pgPesquisar: TTabSheet;
     pgCadastrar: TTabSheet;
-    procedure pcModeloChange(Sender: TObject);
   private
 
   public
@@ -46,10 +44,6 @@ implementation
 
 { TFCadModelo }
 
-procedure TFCadModelo.pcModeloChange(Sender: TObject);
-begin
-
-end;
 
 
 end.

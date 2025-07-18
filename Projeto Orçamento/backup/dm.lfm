@@ -10,6 +10,7 @@ object DataModule1: TDataModule1
       'RawStringEncoding=DB_CP'
     )
     Connected = True
+    AfterConnect = ZConnection1AfterConnect
     DisableSavepoints = False
     HostName = 'localhost'
     Port = 5432
