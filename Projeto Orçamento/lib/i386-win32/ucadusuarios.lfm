@@ -246,8 +246,8 @@ inherited FCadModelo1: TFCadModelo1
       ''
     )
     Params = <>
-    Left = 941
-    Top = 120
+    Left = 992
+    Top = 128
   end
   object updtClientes: TZUpdateSQL[2]
     DeleteSQL.Strings = (
@@ -270,8 +270,8 @@ inherited FCadModelo1: TFCadModelo1
       '  ((USUARIOS.id IS NULL AND :OLD_id IS NULL) OR (USUARIOS.id = :OLD_id))'
     )
     UseSequenceFieldForRefreshSQL = False
-    Left = 941
-    Top = 56
+    Left = 992
+    Top = 64
     ParamData = <    
       item
         Name = 'usuario'
@@ -288,7 +288,7 @@ inherited FCadModelo1: TFCadModelo1
   end
   object dsClientes: TDataSource[3]
     DataSet = qryClientes
-    Left = 941
-    Top = 184
+    Left = 992
+    Top = 192
   end
 end
