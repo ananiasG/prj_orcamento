@@ -1,0 +1,269 @@
+inherited FCadModelo2: TFCadModelo2
+  Height = 553
+  Width = 1095
+  ClientHeight = 553
+  ClientWidth = 1095
+  Color = clWhite
+  Constraints.MinHeight = 520
+  Constraints.MinWidth = 910
+  OnCreate = FormCreate
+  inherited pcModelo: TPageControl
+    Height = 553
+    Width = 1095
+    inherited pgPesquisar: TTabSheet
+      ClientHeight = 522
+      ClientWidth = 1087
+      inherited Panel1: TPanel
+        Height = 433
+        Width = 1027
+        Caption = ''
+        ClientHeight = 433
+        ClientWidth = 1027
+        inherited Panel2: TPanel
+          Width = 1015
+          ClientWidth = 1015
+          inherited LabeledEdit1: TLabeledEdit
+            Height = 26
+            EditLabel.Height = 26
+            Font.Style = []
+            OnChange = LabeledEdit1Change
+          end
+          object cbOptnPesquisa: TComboBox[1]
+            Left = 480
+            Height = 25
+            Top = 8
+            Width = 200
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            ItemHeight = 17
+            ItemIndex = 0
+            Items.Strings = (
+              'ID'
+              'Categoria'
+              'Descrição'
+            )
+            ParentFont = False
+            TabOrder = 1
+            Text = 'ID'
+          end
+        end
+        inherited DBGrid1: TDBGrid
+          Height = 371
+          Top = 56
+          Width = 1015
+          Align = alClient
+          AlternateColor = clMenuBar
+          Color = clDefault
+          Columns = <          
+            item
+              Font.CharSet = ANSI_CHARSET
+              Font.Height = -15
+              Font.Name = 'Arial'
+              Font.Pitch = fpVariable
+              Font.Quality = fqDraft
+              PickList.Strings = (              )
+              Title.Font.CharSet = ANSI_CHARSET
+              Title.Font.Height = -15
+              Title.Font.Name = 'Arial'
+              Title.Font.Pitch = fpVariable
+              Title.Font.Quality = fqDraft
+              Title.Font.Style = [fsBold]
+              Title.Caption = 'ID'
+              Width = 100
+              FieldName = 'categoriaprodutoid'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Font.CharSet = ANSI_CHARSET
+              Title.Font.Height = -15
+              Title.Font.Name = 'Arial'
+              Title.Font.Pitch = fpVariable
+              Title.Font.Quality = fqDraft
+              Title.Font.Style = [fsBold]
+              Title.Caption = 'Categoria'
+              Width = 325
+              FieldName = 'ds_categoria_produto'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Font.CharSet = ANSI_CHARSET
+              Title.Font.Height = -15
+              Title.Font.Name = 'Arial'
+              Title.Font.Pitch = fpVariable
+              Title.Font.Quality = fqDraft
+              Title.Font.Style = [fsBold]
+              Title.Caption = 'Descrição'
+              Width = 589
+              FieldName = 'info_categoria_produto'
+            end>
+          DataSource = dsCategorias
+          Font.Height = -13
+          Font.Style = [fsItalic]
+          ParentFont = False
+          OnDblClick = DBGrid1DblClick
+        end
+      end
+      inherited Panel5: TPanel
+        Top = 467
+        Width = 1077
+        ClientWidth = 1077
+        Color = clBtnFace
+        ParentBackground = False
+        ParentColor = False
+        inherited btInserir: TBitBtn
+          OnClick = btInserirClick
+        end
+        inherited btSair: TBitBtn
+          Left = 960
+          Anchors = [akTop, akRight, akBottom]
+        end
+      end
+    end
+    inherited pgCadastrar: TTabSheet
+      ClientHeight = 522
+      ClientWidth = 1087
+      inherited Panel3: TPanel
+        Top = 467
+        Width = 1077
+        ClientWidth = 1077
+        Color = clBtnFace
+        ParentBackground = False
+        ParentColor = False
+        inherited Panel4: TPanel
+          ParentBackground = False
+          inherited BitBtn2: TBitBtn
+            OnClick = BitBtn2Click
+          end
+          inherited BitBtn3: TBitBtn
+            OnClick = BitBtn3Click
+          end
+          inherited BitBtn4: TBitBtn
+            OnClick = BitBtn4Click
+          end
+        end
+        inherited btExcluir: TBitBtn
+          OnClick = btExcluirClick
+        end
+      end
+      object Panel6: TPanel[1]
+        Left = 380
+        Height = 328
+        Top = 61
+        Width = 330
+        Anchors = []
+        ClientHeight = 328
+        ClientWidth = 330
+        Color = clMenu
+        Constraints.MaxHeight = 380
+        Constraints.MaxWidth = 330
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 1
+        object edtUsuario: TDBEdit
+          Left = 44
+          Height = 25
+          Top = 60
+          Width = 240
+          DataField = 'ds_categoria_produto'
+          DataSource = dsCategorias
+          Anchors = []
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 30
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Label1: TLabel
+          Left = 127
+          Height = 18
+          Top = 37
+          Width = 69
+          Anchors = []
+          Caption = 'Categoria'
+        end
+        object Label2: TLabel
+          Left = 128
+          Height = 18
+          Top = 96
+          Width = 71
+          Caption = 'Descrição'
+        end
+        object bdInfoCat: TDBMemo
+          Left = 44
+          Height = 184
+          Top = 120
+          Width = 240
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          BorderSpacing.Left = 5
+          BorderSpacing.Top = 5
+          BorderSpacing.Right = 5
+          BorderSpacing.Bottom = 5
+          DataField = 'info_categoria_produto'
+          DataSource = dsCategorias
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ParentFont = False
+          TabOrder = 1
+        end
+      end
+    end
+  end
+  object dsCategorias: TDataSource[1]
+    DataSet = qryCategorias
+    Left = 1016
+    Top = 192
+  end
+  object qryCategorias: TZQuery[2]
+    Connection = DataModule1.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO, INFO_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO;'
+    )
+    Params = <>
+    Left = 1016
+    Top = 128
+    object qryCategoriascategoriaprodutoid: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'categoriaprodutoid'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryCategoriasds_categoria_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'ds_categoria_produto'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 50
+    end
+    object qryCategoriasinfo_categoria_produto: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'info_categoria_produto'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 50
+    end
+  end
+  object updtCategorias: TZUpdateSQL[3]
+    UseSequenceFieldForRefreshSQL = False
+    Left = 1016
+    Top = 64
+  end
+end

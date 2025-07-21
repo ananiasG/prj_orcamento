@@ -1,0 +1,98 @@
+inherited FCadModelo3: TFCadModelo3
+  inherited pcModelo: TPageControl
+    inherited pgPesquisar: TTabSheet
+      inherited Panel1: TPanel
+        inherited Panel2: TPanel
+          object DBComboBox1: TDBComboBox[1]
+            Left = 480
+            Height = 26
+            Top = 9
+            Width = 100
+            DataSource = dsClientes
+            ItemHeight = 18
+            MaxLength = 0
+            TabOrder = 1
+          end
+        end
+        inherited DBGrid1: TDBGrid
+          AlternateColor = clMenuBar
+          AutoFillColumns = True
+          DataSource = dsClientes
+          Font.Height = -13
+          Font.Style = [fsItalic]
+          ParentFont = False
+        end
+      end
+      inherited Panel5: TPanel
+        Color = clBtnFace
+        ParentBackground = False
+        ParentColor = False
+      end
+    end
+  end
+  object qryClientes: TZQuery[1]
+    Connection = DataModule1.ZConnection1
+    Active = True
+    SQL.Strings = (
+      'SELECT'
+      '  CLIENTEID,'
+      '  TIPO_CLIENTE,'
+      '  CPF_CNPJ_CLIENTE,'
+      '  NOME_CLIENTE'
+      'FROM'
+      '  CLIENTE;'
+    )
+    Params = <>
+    Left = 904
+    Top = 136
+    object qryClientesclienteid: TZIntegerField
+      FieldKind = fkData
+      FieldName = 'clienteid'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object qryClientestipo_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'tipo_cliente'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 255
+    end
+    object qryClientescpf_cnpj_cliente: TZRawStringField
+      FieldKind = fkData
+      FieldName = 'cpf_cnpj_cliente'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 18
+    end
+    object qryClientesnome_cliente: TStringField
+      FieldKind = fkData
+      FieldName = 'nome_cliente'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 100
+    end
+  end
+  object updtClientes: TZUpdateSQL[2]
+    UseSequenceFieldForRefreshSQL = False
+    Left = 904
+    Top = 72
+  end
+  object dsClientes: TDataSource[3]
+    DataSet = qryClientes
+    Left = 904
+    Top = 208
+  end
+end

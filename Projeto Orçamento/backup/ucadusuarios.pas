@@ -1,4 +1,4 @@
-unit uCadClientes;
+unit ucadusuarios;
 
 {$mode ObjFPC}{$H+}
 
@@ -32,10 +32,8 @@ type
     procedure btSairClick(Sender: TObject);
     procedure cbOptnPesquisaChange(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure dsClientesDataChange(Sender: TObject; Field: TField);
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
-    procedure qryClientesAfterPost(DataSet: TDataSet);
   private
 
   public
@@ -109,10 +107,6 @@ begin
   BitBtn4.Enabled := True;
 end;
 
-procedure TFCadModelo1.dsClientesDataChange(Sender: TObject; Field: TField);
-begin
-
-end;
 
 procedure TFCadModelo1.FormCreate(Sender: TObject);
 begin
@@ -155,15 +149,6 @@ begin
   end;
   qryClientes.Open;
 
-end;
-procedure TFCadModelo1.qryClientesAfterPost(DataSet: TDataSet);
-begin
-  qryClientes.Close;
-  qryClientes.SQL.Clear;
-  qryClientes.SQL.Add('SELECT id, nome_completo, usuario, senha ' +
-                                   'FROM usuarios ' +
-                                   'ORDER BY id ASC');
-  qryClientes.Open;
 end;
 
 

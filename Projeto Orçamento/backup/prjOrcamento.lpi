@@ -55,12 +55,11 @@
         <UnitName Value="uCadModelo"/>
       </Unit>
       <Unit>
-        <Filename Value="ucadclientes.pas"/>
+        <Filename Value="ucadusuarios.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="FCadModelo1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uCadClientes"/>
       </Unit>
       <Unit>
         <Filename Value="dm.pas"/>
@@ -68,6 +67,22 @@
         <ComponentName Value="DataModule1"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucadcategoria.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FCadModelo2"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ucadCategoria"/>
+      </Unit>
+      <Unit>
+        <Filename Value="ucadcliente.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FCadModelo3"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadCliente"/>
       </Unit>
     </Units>
   </ProjectOptions>
