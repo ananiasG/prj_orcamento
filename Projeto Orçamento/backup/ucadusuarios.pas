@@ -34,6 +34,7 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
+    procedure qryClientesAfterPost(DataSet: TDataSet);
   private
 
   public
@@ -149,6 +150,15 @@ begin
   end;
   qryClientes.Open;
 
+end;
+
+procedure TFCadModelo1.qryClientesAfterPost(DataSet: TDataSet);
+begin
+  qryClientes.close;
+  qryClientes.SQL.Add('SELECT id, nome_completo, usuario, senha ' +
+                                   'FROM usuarios ' +
+                                   'ORDER BY id ASC');
+  qryClientes.Open;
 end;
 
 

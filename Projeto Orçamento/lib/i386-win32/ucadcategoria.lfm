@@ -1,6 +1,7 @@
 inherited FCadModelo2: TFCadModelo2
   Height = 553
   Width = 1095
+  Caption = 'Cadastro de Categorias'
   ClientHeight = 553
   ClientWidth = 1095
   Color = clWhite
@@ -59,42 +60,19 @@ inherited FCadModelo2: TFCadModelo2
           Color = clDefault
           Columns = <          
             item
-              Font.CharSet = ANSI_CHARSET
-              Font.Height = -15
-              Font.Name = 'Arial'
-              Font.Pitch = fpVariable
-              Font.Quality = fqDraft
               PickList.Strings = (              )
-              Title.Font.CharSet = ANSI_CHARSET
-              Title.Font.Height = -15
-              Title.Font.Name = 'Arial'
-              Title.Font.Pitch = fpVariable
-              Title.Font.Quality = fqDraft
-              Title.Font.Style = [fsBold]
               Title.Caption = 'ID'
               Width = 100
               FieldName = 'categoriaprodutoid'
             end          
             item
               PickList.Strings = (              )
-              Title.Font.CharSet = ANSI_CHARSET
-              Title.Font.Height = -15
-              Title.Font.Name = 'Arial'
-              Title.Font.Pitch = fpVariable
-              Title.Font.Quality = fqDraft
-              Title.Font.Style = [fsBold]
               Title.Caption = 'Categoria'
               Width = 325
               FieldName = 'ds_categoria_produto'
             end          
             item
               PickList.Strings = (              )
-              Title.Font.CharSet = ANSI_CHARSET
-              Title.Font.Height = -15
-              Title.Font.Name = 'Arial'
-              Title.Font.Pitch = fpVariable
-              Title.Font.Quality = fqDraft
-              Title.Font.Style = [fsBold]
               Title.Caption = 'Descrição'
               Width = 589
               FieldName = 'info_categoria_produto'
@@ -119,6 +97,7 @@ inherited FCadModelo2: TFCadModelo2
         inherited btSair: TBitBtn
           Left = 960
           Anchors = [akTop, akRight, akBottom]
+          OnClick = btSairClick
         end
       end
     end
@@ -224,6 +203,7 @@ inherited FCadModelo2: TFCadModelo2
   end
   object qryCategorias: TZQuery[2]
     Connection = DataModule1.ZConnection1
+    UpdateObject = updtCategorias
     Active = True
     SQL.Strings = (
       'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO, INFO_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO;'
@@ -262,8 +242,40 @@ inherited FCadModelo2: TFCadModelo2
     end
   end
   object updtCategorias: TZUpdateSQL[3]
+    DeleteSQL.Strings = (
+      'DELETE FROM CATEGORIA_PRODUTO'
+      'WHERE'
+      '  ((CATEGORIA_PRODUTO.categoriaprodutoid IS NULL AND :OLD_categoriaprodutoid IS NULL) OR (CATEGORIA_PRODUTO.categoriaprodutoid = :OLD_categoriaprodutoid))'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CATEGORIA_PRODUTO'
+      '  (categoriaprodutoid, ds_categoria_produto, info_categoria_produto)'
+      'VALUES'
+      '  (:categoriaprodutoid, :ds_categoria_produto, :info_categoria_produto)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CATEGORIA_PRODUTO SET'
+      '  categoriaprodutoid = :categoriaprodutoid,'
+      '  ds_categoria_produto = :ds_categoria_produto,'
+      '  info_categoria_produto = :info_categoria_produto'
+      'WHERE'
+      '  ((CATEGORIA_PRODUTO.categoriaprodutoid IS NULL AND :OLD_categoriaprodutoid IS NULL) OR (CATEGORIA_PRODUTO.categoriaprodutoid = :OLD_categoriaprodutoid))'
+    )
     UseSequenceFieldForRefreshSQL = False
     Left = 1016
     Top = 64
+    ParamData = <    
+      item
+        Name = 'categoriaprodutoid'
+      end    
+      item
+        Name = 'ds_categoria_produto'
+      end    
+      item
+        Name = 'info_categoria_produto'
+      end    
+      item
+        Name = 'OLD_categoriaprodutoid'
+      end>
   end
 end
