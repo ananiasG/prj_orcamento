@@ -10,7 +10,8 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, uCadModelo, ucadusuarios, dm, zcomponent, ucadCategoria, uCadCliente;
+  Forms, uCadModelo, ucadusuarios, dm, zcomponent, ucadCategoria, uCadCliente,
+  uMenu, ucadproduto;
 
 {$R *.res}
 
@@ -22,7 +23,7 @@ begin
   {$POP}
   Application.Initialize;
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TFCadModelo3, FCadModelo3);
+  Application.CreateForm(TFmainMenu, FmainMenu);
   Application.Run;
 end.
 

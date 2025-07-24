@@ -9,6 +9,7 @@ object DataModule1: TDataModule1
     Properties.Strings = (
       'RawStringEncoding=DB_CP'
     )
+    Connected = True
     AfterConnect = ZConnection1AfterConnect
     DisableSavepoints = False
     HostName = 'localhost'

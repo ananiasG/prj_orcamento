@@ -1,10 +1,11 @@
 inherited FCadModelo1: TFCadModelo1
   Height = 555
   Width = 1095
+  Caption = 'Cadastro de Usuários'
   ClientHeight = 555
   ClientWidth = 1095
   Constraints.MinHeight = 520
-  Constraints.MinWidth = 820
+  Constraints.MinWidth = 910
   OnCreate = FormCreate
   inherited pcModelo: TPageControl
     Height = 555
@@ -92,6 +93,7 @@ inherited FCadModelo1: TFCadModelo1
           ParentFont = False
           ReadOnly = True
           TitleFont.Color = clBlack
+          TitleFont.Height = -13
           TitleFont.Style = [fsItalic]
           OnDblClick = DBGrid1DblClick
         end
@@ -236,6 +238,7 @@ inherited FCadModelo1: TFCadModelo1
   end
   object qryClientes: TZQuery[1]
     Connection = DataModule1.ZConnection1
+    AfterPost = qryClientesAfterPost
     UpdateObject = updtClientes
     Active = True
     SQL.Strings = (
@@ -256,12 +259,13 @@ inherited FCadModelo1: TFCadModelo1
     )
     InsertSQL.Strings = (
       'INSERT INTO USUARIOS'
-      '  (usuario, nome_completo, senha)'
+      '  (id, usuario, nome_completo, senha)'
       'VALUES'
-      '  (:usuario, :nome_completo, :senha)'
+      '  (:id, :usuario, :nome_completo, :senha)'
     )
     ModifySQL.Strings = (
       'UPDATE USUARIOS SET'
+      '  id = :id,'
       '  usuario = :usuario,'
       '  nome_completo = :nome_completo,'
       '  senha = :senha'
@@ -272,6 +276,9 @@ inherited FCadModelo1: TFCadModelo1
     Left = 992
     Top = 64
     ParamData = <    
+      item
+        Name = 'id'
+      end    
       item
         Name = 'usuario'
       end    

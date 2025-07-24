@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, DBCtrls, ExtCtrls,
-  StdCtrls, Grids, ZDataset, ZSqlUpdate, ZAbstractRODataset, uCadModelo, DB;
+  StdCtrls, ZDataset, ZSqlUpdate, ZAbstractRODataset, uCadModelo, DB;
 
 type
 
@@ -30,6 +30,7 @@ type
     procedure BitBtn4Click(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
     procedure btInserirClick(Sender: TObject);
+    procedure btSairClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
@@ -56,6 +57,11 @@ begin
   btExcluir.Enabled := False;
   BitBtn2.Enabled := True;
   BitBtn4.Enabled := True;
+end;
+
+procedure TFCadModelo2.btSairClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TFCadModelo2.BitBtn2Click(Sender: TObject); //salvar
@@ -99,6 +105,7 @@ end;
 procedure TFCadModelo2.FormCreate(Sender: TObject);
 begin
   pcModelo.ActivePage := pgPesquisar;
+  qryCategorias.Active:= true;
 end;
 
 procedure TFCadModelo2.LabeledEdit1Change(Sender: TObject);

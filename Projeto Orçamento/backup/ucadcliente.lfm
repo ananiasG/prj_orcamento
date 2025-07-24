@@ -1,37 +1,192 @@
 inherited FCadModelo3: TFCadModelo3
+  Height = 548
+  Width = 1102
+  Caption = 'Cadastro de Clientes'
+  ClientHeight = 548
+  ClientWidth = 1102
+  Constraints.MinHeight = 520
+  Constraints.MinWidth = 910
+  OnCreate = FormCreate
   inherited pcModelo: TPageControl
+    Height = 548
+    Width = 1102
     inherited pgPesquisar: TTabSheet
+      ClientHeight = 517
+      ClientWidth = 1094
       inherited Panel1: TPanel
+        Height = 428
+        Width = 1034
+        ClientHeight = 428
+        ClientWidth = 1034
         inherited Panel2: TPanel
-          object DBComboBox1: TDBComboBox[1]
+          Width = 1022
+          ClientWidth = 1022
+          inherited LabeledEdit1: TLabeledEdit
+            OnChange = LabeledEdit1Change
+          end
+          object cbOptnPesquisa: TComboBox[1]
             Left = 480
             Height = 26
             Top = 9
-            Width = 100
-            DataSource = dsClientes
+            Width = 200
             ItemHeight = 18
-            MaxLength = 0
+            ItemIndex = 1
+            Items.Strings = (
+              'ID'
+              'Nome do Cliente'
+            )
             TabOrder = 1
+            Text = 'Nome do Cliente'
           end
         end
         inherited DBGrid1: TDBGrid
+          Height = 358
+          Width = 1022
           AlternateColor = clMenuBar
           AutoFillColumns = True
           DataSource = dsClientes
           Font.Height = -13
           Font.Style = [fsItalic]
           ParentFont = False
+          OnDblClick = DBGrid1DblClick
         end
       end
       inherited Panel5: TPanel
+        Top = 462
+        Width = 1084
+        ClientWidth = 1084
         Color = clBtnFace
         ParentBackground = False
         ParentColor = False
+        inherited btInserir: TBitBtn
+          OnClick = btInserirClick
+        end
+        inherited btSair: TBitBtn
+          Left = 960
+          Anchors = [akTop, akLeft, akRight, akBottom]
+          OnClick = btSairClick
+        end
+      end
+    end
+    inherited pgCadastrar: TTabSheet
+      ClientHeight = 517
+      ClientWidth = 1094
+      inherited Panel3: TPanel
+        Top = 462
+        Width = 1084
+        ClientWidth = 1084
+        inherited Panel4: TPanel
+          inherited BitBtn2: TBitBtn
+            OnClick = BitBtn2Click
+          end
+          inherited BitBtn3: TBitBtn
+            OnClick = BitBtn3Click
+          end
+          inherited BitBtn4: TBitBtn
+            OnClick = BitBtn4Click
+          end
+        end
+        inherited btExcluir: TBitBtn
+          OnClick = btExcluirClick
+        end
+      end
+      object Panel6: TPanel[1]
+        Left = 384
+        Height = 296
+        Top = 64
+        Width = 330
+        Align = alCustom
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        ClientHeight = 296
+        ClientWidth = 330
+        Color = clMenu
+        Constraints.MaxHeight = 380
+        Constraints.MaxWidth = 330
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 1
+        object edtUsuario: TDBEdit
+          Left = 44
+          Height = 25
+          Top = 56
+          Width = 240
+          DataField = 'nome_cliente'
+          DataSource = dsClientes
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 100
+          ParentFont = False
+          TabOrder = 0
+        end
+        object Label1: TLabel
+          Left = 144
+          Height = 18
+          Top = 32
+          Width = 41
+          Align = alCustom
+          Anchors = []
+          Caption = 'Nome'
+        end
+        object DBComboBox2: TDBComboBox
+          Left = 44
+          Height = 25
+          Top = 127
+          Width = 240
+          DataField = 'tipo_cliente'
+          DataSource = dsClientes
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ItemHeight = 17
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 1
+        end
+        object DBEdit1: TDBEdit
+          Left = 44
+          Height = 25
+          Top = 200
+          Width = 240
+          DataField = 'cpf_cnpj_cliente'
+          DataSource = dsClientes
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 18
+          ParentFont = False
+          TabOrder = 2
+        end
+        object Label3: TLabel
+          Left = 112
+          Height = 18
+          Top = 104
+          Width = 109
+          Align = alCustom
+          Anchors = []
+          Caption = 'Tipo do Cliente'
+        end
+        object Label4: TLabel
+          Left = 152
+          Height = 18
+          Top = 177
+          Width = 30
+          Align = alCustom
+          Anchors = []
+          Caption = 'CPF'
+        end
       end
     end
   end
   object qryClientes: TZQuery[1]
     Connection = DataModule1.ZConnection1
+    UpdateObject = updtClientes
     Active = True
     SQL.Strings = (
       'SELECT'
@@ -43,8 +198,8 @@ inherited FCadModelo3: TFCadModelo3
       '  CLIENTE;'
     )
     Params = <>
-    Left = 904
-    Top = 136
+    Left = 992
+    Top = 128
     object qryClientesclienteid: TZIntegerField
       FieldKind = fkData
       FieldName = 'clienteid'
@@ -86,13 +241,49 @@ inherited FCadModelo3: TFCadModelo3
     end
   end
   object updtClientes: TZUpdateSQL[2]
+    DeleteSQL.Strings = (
+      'DELETE FROM CLIENTE'
+      'WHERE'
+      '  CLIENTE.clienteid = :OLD_clienteid'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CLIENTE'
+      '  (clienteid, tipo_cliente, cpf_cnpj_cliente, nome_cliente)'
+      'VALUES'
+      '  (:clienteid, :tipo_cliente, :cpf_cnpj_cliente, :nome_cliente)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CLIENTE SET'
+      '  clienteid = :clienteid,'
+      '  tipo_cliente = :tipo_cliente,'
+      '  cpf_cnpj_cliente = :cpf_cnpj_cliente,'
+      '  nome_cliente = :nome_cliente'
+      'WHERE'
+      '  CLIENTE.clienteid = :OLD_clienteid'
+    )
     UseSequenceFieldForRefreshSQL = False
-    Left = 904
-    Top = 72
+    Left = 992
+    Top = 64
+    ParamData = <    
+      item
+        Name = 'clienteid'
+      end    
+      item
+        Name = 'tipo_cliente'
+      end    
+      item
+        Name = 'cpf_cnpj_cliente'
+      end    
+      item
+        Name = 'nome_cliente'
+      end    
+      item
+        Name = 'OLD_clienteid'
+      end>
   end
   object dsClientes: TDataSource[3]
     DataSet = qryClientes
-    Left = 904
-    Top = 208
+    Left = 992
+    Top = 200
   end
 end

@@ -1,0 +1,52 @@
+object FmainMenu: TFmainMenu
+  Left = 543
+  Height = 291
+  Top = 250
+  Width = 385
+  Caption = 'Menu'
+  ClientHeight = 520
+  ClientWidth = 910
+  Constraints.MinHeight = 520
+  Constraints.MinWidth = 910
+  Menu = MainMenu1
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 520
+    Top = 0
+    Width = 910
+    Align = alClient
+    TabOrder = 0
+  end
+  object MainMenu1: TMainMenu
+    Left = 158
+    Top = 63
+    object mnCadastro: TMenuItem
+      Caption = 'Cadastro'
+      object mnCadClientes: TMenuItem
+        Caption = 'Clientes'
+        OnClick = mnCadClientesClick
+      end
+      object mnCadCategoria: TMenuItem
+        Caption = 'Categoria'
+        OnClick = mnCadCategoriaClick
+      end
+      object mnCadProduto: TMenuItem
+        Caption = 'Produto'
+        OnClick = mnCadProdutoClick
+      end
+    end
+    object mnVendas: TMenuItem
+      Caption = 'Vendas'
+      object mnCadOrcamentos: TMenuItem
+        Caption = 'Orçamentos'
+      end
+    end
+    object mnRelatorios: TMenuItem
+      Caption = 'Relatórios'
+    end
+    object mnSair: TMenuItem
+      Caption = 'Sair'
+      OnClick = mnSairClick
+    end
+  end
+end
