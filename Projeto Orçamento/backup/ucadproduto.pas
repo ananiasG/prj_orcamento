@@ -6,21 +6,20 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, DBCtrls,
-  StdCtrls, ZDataset, ZSqlUpdate, ZAbstractRODataset, uCadModelo, DB, dm, ucadCategoria;
+  StdCtrls, ZDataset, ZSqlUpdate, ZAbstractRODataset, uCadModelo, DB, dm, ucadCategoria, Types;
 
 type
 
   { TFCadModelo4 }
 
   TFCadModelo4 = class(TFCadModelo)
-    dbCBCategoria: TDBComboBox;
+    cbOptnPesquisa: TComboBox;
+    DBComboBox1: TDBComboBox;
+    dsProduto: TDataSource;
     dbCBStatus: TDBComboBox;
-    cbOptnPesquisa: TDBComboBox;
-    CBStatus: TDBComboBox;
     dbEditNome: TDBEdit;
     dbEditObs: TDBEdit;
     dbEditValorV: TDBEdit;
-    dsProduto: TDataSource;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -29,7 +28,11 @@ type
     Label6: TLabel;
     Panel6: TPanel;
     Panel7: TPanel;
+    qryCategorias: TZQuery;
+    qryCategoriascategoriaprodutoid: TZIntegerField;
+    qryCategoriasds_categoria_produto: TZRawStringField;
     qryProduto: TZQuery;
+    qryProdutocategoriaprodutoid: TZIntegerField;
     qryProdutods_categoria_produto: TZRawStringField;
     qryProdutods_produto: TZRawStringField;
     qryProdutodt_cadastro_produto: TZDateTimeField;
@@ -38,7 +41,6 @@ type
     qryProdutostatus_produto: TZRawStringField;
     qryProdutovl_venda_produto: TZBCDField;
     updtProduto: TZUpdateSQL;
-    qryCategorias: TZQuery;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn4Click(Sender: TObject);
@@ -57,6 +59,7 @@ type
 
 var
   FCadModelo4: TFCadModelo4;
+  OptionStatus: Integer;
 
 implementation
 
@@ -75,9 +78,11 @@ begin
 end;
 
 procedure TFCadModelo4.BitBtn2Click(Sender: TObject); //salvar
+var
+  id: Integer;
 begin
-  qryProduto.FieldByName('categoriaprodutoid').AsInteger := Integer(dbCBCategoria.Items.Objects[dbCBCategoria.ItemIndex]);
-
+  id := Integer(DBComboBox1.Items.Objects[DBComboBox1.ItemIndex]);
+  qryProdutocategoriaprodutoid.AsInteger := id;
   qryProduto.Post;
   qryProduto.Open;
   pcModelo.ActivePage:= pgPesquisar;
@@ -122,29 +127,26 @@ end;
 
 procedure TFCadModelo4.FormCreate(Sender: TObject);
 begin
-  pcModelo.ActivePage := pgPesquisar;
-  qryProduto.Active:= true;
+  DBComboBox1.Items.Clear;
+  qryCategorias.Open;
+
+  qryCategorias.First;
+  while not qryCategorias.EOF do
+  begin
+    DBComboBox1.Items.AddObject(qryCategorias.FieldByName('DS_CATEGORIA_PRODUTO').AsString,
+                      TObject(qryCategorias.FieldByName('categoriaprodutoid').AsInteger));
+    qryCategorias.Next;
+  end;
+
+  qryCategorias.Close;
 end;
 
 procedure TFCadModelo4.FormShow(Sender: TObject);
 begin
-  dbCBCategoria.Items.Clear;
-
-  qryCategorias.Close;
-  qryCategorias.SQL.Text :=
-    'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO ORDER BY DS_CATEGORIA_PRODUTO';
-  qryCategorias.Open;
-
-  while not qryCategorias.EOF do
-  begin
-    dbCBCategoria.Items.AddObject(
-      qryCategorias.FieldByName('DS_CATEGORIA_PRODUTO').AsString,
-      TObject(qryCategorias.FieldByName('CATEGORIAPRODUTOID').AsInteger)
-    );
-    qryCategorias.Next;
-  end;
+  pcModelo.ActivePage := pgPesquisar;
+  if not qryProduto.Active then
+    qryProduto.Open;
 end;
-
 
 procedure TFCadModelo4.LabeledEdit1Change(Sender: TObject);
 begin
@@ -153,47 +155,59 @@ begin
 
   if LabeledEdit1.Text <> '' then
   begin
-    case cbOptnPesquisa.ItemIndex of
-      0: begin
-        qryProduto.SQL.Add(
-          'SELECT produtoid, DS_PRODUTO, OBS_PRODUTO, VL_VENDA_PRODUTO, DT_CADASTRO_PRODUTO, STATUS_PRODUTO ' +
-          'FROM PRODUTO ' +
-            'WHERE DS_PRODUTO ILIKE :ds_produto'
-        );
-        qryProduto.ParamByName('ds_produto').AsString := '%' + LabeledEdit1.Text + '%';
-      end;
+      case cbOptnPesquisa.ItemIndex of
+        0: begin
+          qryProduto.SQL.Add(
+          'SELECT P.PRODUTOID, P.DS_PRODUTO, P.OBS_PRODUTO, P.VL_VENDA_PRODUTO,P.DT_CADASTRO_PRODUTO,P.STATUS_PRODUTO,P.CATEGORIAPRODUTOID, C.DS_CATEGORIA_PRODUTO '+
+          'FROM PRODUTO P ' +
+          'INNER JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID '+
+          'WHERE cast(produtoid as text) ILIKE :id'
+          );
+          qryProduto.ParamByName('id').AsString := '%' + LabeledEdit1.Text + '%';
+        end;
 
-      1: begin
-        qryProduto.SQL.Add(
-          'SELECT DS_PRODUTO, OBS_PRODUTO, VL_VENDA_PRODUTO, DT_CADASTRO_PRODUTO, STATUS_PRODUTO ' +
-          'FROM PRODUTO ' +
-          'WHERE OBS_PRODUTO ILIKE :obs'
-        );
-        qryProduto.ParamByName('obs').AsString := '%' + LabeledEdit1.Text + '%';
-      end;
+        1: begin
+          qryProduto.SQL.Add(
+          'SELECT P.PRODUTOID, P.DS_PRODUTO, P.OBS_PRODUTO, P.VL_VENDA_PRODUTO,P.DT_CADASTRO_PRODUTO,P.STATUS_PRODUTO, P.CATEGORIAPRODUTOID, C.DS_CATEGORIA_PRODUTO '+
+          'FROM PRODUTO P ' +
+          'INNER JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID '+
+          'WHERE cast(DS_PRODUTO as text) ILIKE :prod'
+          );
+          qryProduto.ParamByName('prod').AsString := '%' + LabeledEdit1.Text + '%';
+        end;
 
-      2: begin
-        qryProduto.SQL.Add(
-          'SELECT DS_PRODUTO, OBS_PRODUTO, VL_VENDA_PRODUTO, DT_CADASTRO_PRODUTO, STATUS_PRODUTO ' +
-          'FROM PRODUTO ' +
-          'WHERE STATUS_PRODUTO ILIKE :status'
-        );
-        qryProduto.ParamByName('status').AsString := '%' + LabeledEdit1.Text + '%';
+        2: begin
+          qryProduto.SQL.Add(
+          'SELECT P.PRODUTOID, P.DS_PRODUTO, P.OBS_PRODUTO, P.VL_VENDA_PRODUTO,P.DT_CADASTRO_PRODUTO,P.STATUS_PRODUTO, P.CATEGORIAPRODUTOID, C.DS_CATEGORIA_PRODUTO '+
+          'FROM PRODUTO P ' +
+          'INNER JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID '+
+          'WHERE cast(OBS_PRODUTO as text) ILIKE :obs'
+          );
+          qryProduto.ParamByName('obs').AsString := '%' + LabeledEdit1.Text + '%';
+        end;
+        3: begin
+          qryProduto.SQL.Add(
+          'SELECT P.PRODUTOID, P.DS_PRODUTO, P.OBS_PRODUTO, P.VL_VENDA_PRODUTO,P.DT_CADASTRO_PRODUTO,P.STATUS_PRODUTO, P.CATEGORIAPRODUTOID, C.DS_CATEGORIA_PRODUTO '+
+          'FROM PRODUTO P ' +
+          'INNER JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID '+
+          'WHERE cast(DS_CATEGORIA_PRODUTO as text) ILIKE :cat'
+          );
+          qryProduto.ParamByName('cat').AsString := '%' + LabeledEdit1.Text + '%';
+        end;
       end;
-    end;
   end
   else
   begin
     qryProduto.SQL.Add(
-      'SELECT DS_PRODUTO, OBS_PRODUTO, VL_VENDA_PRODUTO, DT_CADASTRO_PRODUTO, STATUS_PRODUTO ' +
-      'FROM PRODUTO ' +
-      'ORDER BY DS_PRODUTO ASC'
+    'SELECT P.PRODUTOID, P.DS_PRODUTO, P.OBS_PRODUTO, P.VL_VENDA_PRODUTO,P.DT_CADASTRO_PRODUTO,P.STATUS_PRODUTO,P.CATEGORIAPRODUTOID, C.DS_CATEGORIA_PRODUTO '+
+    'FROM PRODUTO P ' +
+    'INNER JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID '+
+    'ORDER BY PRODUTOID ASC'
     );
   end;
 
   qryProduto.Open;
 end;
-
 
 end.
 

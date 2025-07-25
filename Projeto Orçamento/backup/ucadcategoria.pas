@@ -33,7 +33,6 @@ type
     procedure btSairClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormShow(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
   private
 

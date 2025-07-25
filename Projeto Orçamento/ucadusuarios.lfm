@@ -240,7 +240,6 @@ inherited FCadModelo1: TFCadModelo1
     Connection = DataModule1.ZConnection1
     AfterPost = qryClientesAfterPost
     UpdateObject = updtClientes
-    Active = True
     SQL.Strings = (
       'SELECT * FROM USUARIOS ORDER BY ID ASC'
       ''

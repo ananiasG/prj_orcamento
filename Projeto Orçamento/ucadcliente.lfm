@@ -22,19 +22,28 @@ inherited FCadModelo3: TFCadModelo3
           Width = 1022
           ClientWidth = 1022
           inherited LabeledEdit1: TLabeledEdit
+            Height = 26
+            EditLabel.Height = 26
+            Font.Style = []
             OnChange = LabeledEdit1Change
           end
           object cbOptnPesquisa: TComboBox[1]
             Left = 480
-            Height = 26
+            Height = 25
             Top = 9
             Width = 200
-            ItemHeight = 18
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            ItemHeight = 17
             ItemIndex = 1
             Items.Strings = (
               'ID'
               'Nome do Cliente'
             )
+            ParentFont = False
             TabOrder = 1
             Text = 'Nome do Cliente'
           end
@@ -187,7 +196,6 @@ inherited FCadModelo3: TFCadModelo3
   object qryClientes: TZQuery[1]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtClientes
-    Active = True
     SQL.Strings = (
       'SELECT'
       '  CLIENTEID,'

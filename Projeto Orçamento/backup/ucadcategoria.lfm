@@ -8,7 +8,6 @@ inherited FCadModelo2: TFCadModelo2
   Constraints.MinHeight = 520
   Constraints.MinWidth = 910
   OnCreate = FormCreate
-  OnShow = FormShow
   inherited pcModelo: TPageControl
     Height = 553
     Width = 1095
@@ -205,7 +204,6 @@ inherited FCadModelo2: TFCadModelo2
   object qryCategorias: TZQuery[2]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtCategorias
-    Active = True
     SQL.Strings = (
       'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO, INFO_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO;'
     )

@@ -23,8 +23,6 @@ begin
   {$POP}
   Application.Initialize;
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TFCadModelo1, FCadModelo1);
-  Application.CreateForm(TFCadModelo4, FCadModelo4);
   Application.CreateForm(TFmainMenu, FmainMenu);
   Application.Run;
 end.

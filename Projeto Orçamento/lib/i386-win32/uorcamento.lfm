@@ -1,0 +1,105 @@
+inherited FCadModelo5: TFCadModelo5
+  inherited pcModelo: TPageControl
+    ActivePage = pgCadastrar
+    TabIndex = 1
+    inherited pgPesquisar: TTabSheet
+      inherited Panel5: TPanel
+        Color = clMenuBar
+        ParentBackground = False
+        ParentColor = False
+      end
+    end
+    inherited pgCadastrar: TTabSheet
+      object Panel6: TPanel[1]
+        Left = 10
+        Height = 91
+        Top = 5
+        Width = 1001
+        Align = alTop
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 10
+        ClientHeight = 91
+        ClientWidth = 1001
+        Color = clMenu
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 1
+        object LBDataOrc: TLabeledEdit
+          Left = 864
+          Height = 26
+          Top = 16
+          Width = 112
+          EditLabel.Height = 26
+          EditLabel.Width = 130
+          EditLabel.Caption = 'Data de Cadastro: '
+          LabelPosition = lpLeft
+          TabOrder = 0
+        end
+        object LBDataVal: TLabeledEdit
+          Left = 864
+          Height = 26
+          Top = 48
+          Width = 112
+          EditLabel.Height = 26
+          EditLabel.Width = 125
+          EditLabel.Caption = 'Data de Validade: '
+          LabelPosition = lpLeft
+          TabOrder = 1
+        end
+        object Panel7: TPanel
+          Left = 6
+          Height = 79
+          Top = 6
+          Width = 264
+          Align = alLeft
+          BorderSpacing.Left = 5
+          BorderSpacing.Top = 5
+          BorderSpacing.Bottom = 5
+          BevelColor = clWindowFrame
+          BorderStyle = bsSingle
+          ClientHeight = 75
+          ClientWidth = 260
+          Color = clBtnFace
+          ParentBackground = False
+          ParentColor = False
+          TabOrder = 2
+          object LabeledEdit2: TLabeledEdit
+            Left = 24
+            Height = 26
+            Top = 35
+            Width = 216
+            EditLabel.Height = 19
+            EditLabel.Width = 216
+            EditLabel.Caption = 'LabeledEdit2'
+            EditLabel.ParentFont = False
+            EditLabel.Font.CharSet = ANSI_CHARSET
+            EditLabel.Font.Height = -16
+            EditLabel.Font.Name = 'Arial'
+            EditLabel.Font.Pitch = fpVariable
+            EditLabel.Font.Quality = fqDraft
+            EditLabel.Font.Style = [fsBold]
+            TabOrder = 0
+            Text = 'LabeledEdit2'
+          end
+        end
+        object Panel8: TPanel
+          Left = 275
+          Height = 79
+          Top = 6
+          Width = 264
+          Align = alLeft
+          BorderSpacing.Left = 5
+          BorderSpacing.Top = 5
+          BorderSpacing.Bottom = 5
+          BevelColor = clWindowFrame
+          BorderStyle = bsSingle
+          Color = clBtnFace
+          ParentBackground = False
+          ParentColor = False
+          TabOrder = 3
+        end
+      end
+    end
+  end
+end
