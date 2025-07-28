@@ -204,6 +204,7 @@ inherited FCadModelo2: TFCadModelo2
   object qryCategorias: TZQuery[2]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtCategorias
+    Active = True
     SQL.Strings = (
       'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO, INFO_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO;'
     )

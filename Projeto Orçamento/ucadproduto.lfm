@@ -3,17 +3,17 @@ inherited FCadModelo4: TFCadModelo4
   OnCreate = FormCreate
   OnShow = FormShow
   inherited pcModelo: TPageControl
-    Font.Style = []
     inherited pgPesquisar: TTabSheet
-      ClientHeight = 485
+      Font.Style = []
+      ParentFont = False
       inherited Panel1: TPanel
-        Height = 396
-        ClientHeight = 396
         inherited Panel2: TPanel
           inherited LabeledEdit1: TLabeledEdit
             Height = 26
             EditLabel.Height = 26
             EditLabel.Width = 74
+            EditLabel.ParentFont = False
+            EditLabel.Font.Style = []
             Font.Style = []
             OnChange = LabeledEdit1Change
           end
@@ -35,60 +35,58 @@ inherited FCadModelo4: TFCadModelo4
           end
         end
         inherited DBGrid1: TDBGrid
-          Height = 326
           AutoFillColumns = True
           Columns = <          
             item
               PickList.Strings = (              )
-              Title.Caption = 'produtoid'
+              Title.Caption = 'ID'
               Width = 131
               FieldName = 'produtoid'
             end          
             item
               PickList.Strings = (              )
-              Title.Caption = 'ds_produto'
+              Title.Caption = 'Produto'
               Width = 131
               FieldName = 'ds_produto'
             end          
             item
               PickList.Strings = (              )
-              Title.Caption = 'ds_categoria_produto'
+              Title.Caption = 'Categoria'
               Width = 131
               FieldName = 'ds_categoria_produto'
             end          
             item
               PickList.Strings = (              )
-              Title.Caption = 'obs_produto'
+              Title.Caption = 'Observação'
               Width = 131
               FieldName = 'obs_produto'
             end          
             item
               PickList.Strings = (              )
-              Title.Caption = 'status_produto'
+              Title.Caption = 'Status'
               Width = 131
               FieldName = 'status_produto'
             end          
             item
               PickList.Strings = (              )
-              Title.Caption = 'vl_venda_produto'
+              Title.Caption = 'Valor de Venda'
               Width = 131
               FieldName = 'vl_venda_produto'
             end          
             item
               PickList.Strings = (              )
-              Title.Caption = 'dt_cadastro_produto'
+              Title.Caption = 'Data de Cadastro'
               Width = 130
               FieldName = 'dt_cadastro_produto'
             end>
           DataSource = dsProduto
           Font.Height = -13
-          Font.Style = [fsItalic]
+          Font.Style = []
           ParentFont = False
           OnDblClick = DBGrid1DblClick
         end
       end
       inherited Panel5: TPanel
-        Top = 430
         Color = clBtnFace
         ParentBackground = False
         ParentColor = False
@@ -102,9 +100,7 @@ inherited FCadModelo4: TFCadModelo4
       end
     end
     inherited pgCadastrar: TTabSheet
-      ClientHeight = 485
       inherited Panel3: TPanel
-        Top = 430
         Color = clMenuBar
         ParentBackground = False
         ParentColor = False
@@ -126,7 +122,7 @@ inherited FCadModelo4: TFCadModelo4
       end
       object Panel6: TPanel[1]
         Left = 296
-        Height = 380
+        Height = 379
         Top = 25
         Width = 424
         Align = alCustom
@@ -138,7 +134,7 @@ inherited FCadModelo4: TFCadModelo4
         BevelWidth = 2
         BorderWidth = 2
         BorderStyle = bsSingle
-        ClientHeight = 376
+        ClientHeight = 375
         ClientWidth = 420
         Color = clBtnFace
         ParentBackground = False
@@ -213,7 +209,7 @@ inherited FCadModelo4: TFCadModelo4
         object Panel7: TPanel
           Left = 10
           Height = 228
-          Top = 138
+          Top = 137
           Width = 400
           Align = alBottom
           BorderSpacing.Left = 6
@@ -273,12 +269,12 @@ inherited FCadModelo4: TFCadModelo4
           end
           object dbCBStatus: TDBComboBox
             Left = 40
-            Height = 25
+            Height = 26
             Top = 152
             Width = 125
             DataField = 'status_produto'
             DataSource = dsProduto
-            ItemHeight = 17
+            ItemHeight = 18
             Items.Strings = (
               'ATIVO'
               'INATIVO'
@@ -303,12 +299,12 @@ inherited FCadModelo4: TFCadModelo4
           end
           object DBComboBox1: TDBComboBox
             Left = 216
-            Height = 25
+            Height = 26
             Top = 152
             Width = 136
             DataField = 'ds_categoria_produto'
             DataSource = dsProduto
-            ItemHeight = 17
+            ItemHeight = 18
             MaxLength = 0
             TabOrder = 2
           end

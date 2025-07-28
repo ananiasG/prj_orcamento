@@ -83,9 +83,11 @@ var
 begin
   id := Integer(DBComboBox1.Items.Objects[DBComboBox1.ItemIndex]);
   qryProdutocategoriaprodutoid.AsInteger := id;
-  qryProduto.Post;
   qryProduto.Open;
+  qryProduto.Post;
   pcModelo.ActivePage:= pgPesquisar;
+
+
 end;
 
 procedure TFCadModelo4.BitBtn3Click(Sender: TObject); //editar

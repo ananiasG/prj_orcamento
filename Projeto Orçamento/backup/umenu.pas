@@ -5,7 +5,7 @@ unit uMenu;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, uCadCliente, uCadCategoria,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, uCadCliente, uCadCategoria, uCadproduto, ucadCategoria,
   Menus;
 
 type
@@ -25,6 +25,7 @@ type
     PageControl1: TPageControl;
     procedure mnCadCategoriaClick(Sender: TObject);
     procedure mnCadClientesClick(Sender: TObject);
+    procedure mnCadOrcamentosClick(Sender: TObject);
     procedure mnCadProdutoClick(Sender: TObject);
     procedure mnSairClick(Sender: TObject);
   private
@@ -51,6 +52,14 @@ begin
 
   FCadModelo3.ShowModal;
 
+end;
+
+procedure TFmainMenu.mnCadOrcamentosClick(Sender: TObject);
+begin
+  if not Assigned(FCadModelo5) then
+      FCadModelo5 := TFCadModelo5.Create(Self);
+
+    FCadModelo5.ShowModal;
 end;
 
 procedure TFmainMenu.mnCadProdutoClick(Sender: TObject);

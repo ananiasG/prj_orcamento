@@ -1,105 +1,504 @@
 inherited FCadModelo5: TFCadModelo5
+  Height = 566
+  Width = 1023
+  ClientHeight = 566
+  ClientWidth = 1023
   inherited pcModelo: TPageControl
-    ActivePage = pgCadastrar
-    TabIndex = 1
+    Height = 570
+    Width = 1030
+    Constraints.MinHeight = 570
+    Constraints.MinWidth = 1030
     inherited pgPesquisar: TTabSheet
+      ClientHeight = 539
+      ClientWidth = 1022
+      inherited Panel1: TPanel
+        Height = 450
+        Width = 962
+        ClientHeight = 450
+        ClientWidth = 962
+        inherited Panel2: TPanel
+          Width = 950
+          ClientWidth = 950
+        end
+        inherited DBGrid1: TDBGrid
+          Height = 380
+          Width = 950
+          AutoFillColumns = True
+          Columns = <          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'ID'
+              Width = 184
+              FieldName = 'orcamentoid'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Produto'
+              Width = 184
+              FieldName = 'produtodesc'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Quantidade'
+              Width = 183
+              FieldName = 'qt_produto'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Valor Unitário'
+              Width = 183
+              FieldName = 'vl_unitario'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Valor Total'
+              Width = 183
+              FieldName = 'vl_total'
+            end>
+          DataSource = dsOrcamento
+          Font.Height = -13
+          Font.Style = [fsItalic]
+          ParentFont = False
+          OnDblClick = DBGrid1DblClick
+        end
+      end
       inherited Panel5: TPanel
+        Top = 484
+        Width = 1012
+        ClientWidth = 1012
         Color = clMenuBar
         ParentBackground = False
         ParentColor = False
+        inherited btInserir: TBitBtn
+          OnClick = btInserirClick
+        end
+        inherited btSair: TBitBtn
+          OnClick = btSairClick
+        end
       end
     end
     inherited pgCadastrar: TTabSheet
+      ClientHeight = 539
+      ClientWidth = 1022
+      inherited Panel3: TPanel
+        Top = 484
+        Width = 1012
+        ClientWidth = 1012
+        Color = clMenuBar
+        ParentBackground = False
+        ParentColor = False
+        inherited Panel4: TPanel
+          ParentBackground = False
+          inherited BitBtn2: TBitBtn
+            OnClick = BitBtn2Click
+          end
+          inherited BitBtn3: TBitBtn
+            OnClick = BitBtn3Click
+          end
+          inherited BitBtn4: TBitBtn
+            OnClick = BitBtn4Click
+          end
+        end
+        inherited btExcluir: TBitBtn
+          OnClick = btExcluirClick
+        end
+      end
       object Panel6: TPanel[1]
         Left = 10
         Height = 91
         Top = 5
-        Width = 1001
+        Width = 1002
         Align = alTop
         BorderSpacing.Left = 10
         BorderSpacing.Top = 5
         BorderSpacing.Right = 10
         ClientHeight = 91
-        ClientWidth = 1001
+        ClientWidth = 1002
         Color = clMenu
         ParentBackground = False
         ParentColor = False
         TabOrder = 1
-        object LBDataOrc: TLabeledEdit
-          Left = 864
-          Height = 26
-          Top = 16
-          Width = 112
-          EditLabel.Height = 26
-          EditLabel.Width = 130
-          EditLabel.Caption = 'Data de Cadastro: '
-          LabelPosition = lpLeft
-          TabOrder = 0
-        end
-        object LBDataVal: TLabeledEdit
-          Left = 864
-          Height = 26
-          Top = 48
-          Width = 112
-          EditLabel.Height = 26
-          EditLabel.Width = 125
-          EditLabel.Caption = 'Data de Validade: '
-          LabelPosition = lpLeft
-          TabOrder = 1
-        end
-        object Panel7: TPanel
+        object Panel10: TPanel
           Left = 6
           Height = 79
           Top = 6
-          Width = 264
+          Width = 650
           Align = alLeft
+          Anchors = [akTop, akLeft, akRight, akBottom]
           BorderSpacing.Left = 5
           BorderSpacing.Top = 5
           BorderSpacing.Bottom = 5
           BevelColor = clWindowFrame
           BorderStyle = bsSingle
           ClientHeight = 75
-          ClientWidth = 260
+          ClientWidth = 646
           Color = clBtnFace
           ParentBackground = False
           ParentColor = False
-          TabOrder = 2
-          object LabeledEdit2: TLabeledEdit
+          TabOrder = 0
+          object DBLookupComboBox1: TDBLookupComboBox
             Left = 24
             Height = 26
-            Top = 32
-            Width = 216
-            EditLabel.Height = 19
-            EditLabel.Width = 216
-            EditLabel.Caption = 'LabeledEdit2'
-            EditLabel.ParentFont = False
-            EditLabel.Font.CharSet = ANSI_CHARSET
-            EditLabel.Font.Height = -16
-            EditLabel.Font.Name = 'Arial'
-            EditLabel.Font.Pitch = fpVariable
-            EditLabel.Font.Quality = fqDraft
-            EditLabel.Font.Style = [fsBold]
+            Top = 29
+            Width = 212
+            DataField = 'clienteid'
+            DataSource = dsOrcamento
+            KeyField = 'clienteid'
+            ListField = 'nome_cliente'
+            ListFieldIndex = 0
+            ListSource = FCadModelo3.dsClientes
+            LookupCache = False
             TabOrder = 0
-            Text = 'LabeledEdit2'
           end
         end
-        object Panel8: TPanel
-          Left = 275
+        object Panel11: TPanel
+          Left = 664
           Height = 79
           Top = 6
-          Width = 264
-          Align = alLeft
+          Width = 337
+          Align = alRight
           BorderSpacing.Left = 5
           BorderSpacing.Top = 5
           BorderSpacing.Bottom = 5
           BevelColor = clWindowFrame
           BorderStyle = bsSingle
+          ClientHeight = 75
+          ClientWidth = 333
           Color = clBtnFace
           ParentBackground = False
           ParentColor = False
+          TabOrder = 1
+          object LBDataOrc: TDBEdit
+            Left = 178
+            Height = 23
+            Top = 14
+            Width = 140
+            DataSource = dsOrcamentoItem
+            Anchors = [akTop, akRight, akBottom]
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 0
+          end
+          object LBDataVal: TDBEdit
+            Left = 178
+            Height = 22
+            Top = 40
+            Width = 140
+            Anchors = [akTop, akRight, akBottom]
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            MaxLength = 0
+            ParentFont = False
+            TabOrder = 1
+          end
+          object Label1: TLabel
+            Left = 24
+            Height = 19
+            Top = 16
+            Width = 142
+            Anchors = [akTop, akRight, akBottom]
+            Caption = 'Data de Cadastro: '
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -16
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label2: TLabel
+            Left = 29
+            Height = 19
+            Top = 40
+            Width = 137
+            Anchors = [akTop, akRight, akBottom]
+            Caption = 'Data de Validade: '
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -16
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+        end
+      end
+      object DBGrid2: TDBGrid[2]
+        Left = 393
+        Height = 368
+        Top = 106
+        Width = 619
+        Align = alRight
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 10
+        Color = clWindow
+        Columns = <        
+          item
+            Title.Caption = 'orcamentoid'
+            Width = 98
+            FieldName = 'orcamentoid'
+          end        
+          item
+            Title.Caption = 'orcamentoitemid'
+            Width = 97
+            FieldName = 'orcamentoitemid'
+          end        
+          item
+            MinSize = 0
+            Title.Caption = 'produtodesc'
+            Width = 100
+            FieldName = 'produtodesc'
+          end        
+          item
+            Title.Caption = 'qt_produto'
+            Width = 97
+            FieldName = 'qt_produto'
+          end        
+          item
+            Title.Caption = 'vl_unitario'
+            Width = 97
+            FieldName = 'vl_unitario'
+          end        
+          item
+            Title.Caption = 'vl_total'
+            Width = 97
+            FieldName = 'vl_total'
+          end>
+        DataSource = dsOrcamentoItem
+        Font.CharSet = ANSI_CHARSET
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentFont = False
+        TabOrder = 2
+      end
+      object Panel8: TPanel[3]
+        Left = 10
+        Height = 368
+        Top = 106
+        Width = 374
+        Align = alLeft
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 5
+        BorderSpacing.Bottom = 10
+        ClientHeight = 368
+        ClientWidth = 374
+        Color = clMenuBar
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 3
+        object Button1: TButton
+          Left = 32
+          Height = 35
+          Top = 248
+          Width = 100
+          Caption = 'Adicionar'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+        object Button2: TButton
+          Left = 136
+          Height = 35
+          Top = 248
+          Width = 100
+          Caption = 'Excluir'
+          TabOrder = 1
+          OnClick = Button2Click
+        end
+        object DBEdit1: TDBEdit
+          Left = 32
+          Height = 25
+          Top = 112
+          Width = 307
+          DataField = 'produtodesc'
+          DataSource = dsOrcamentoItem
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 2
+        end
+        object DBEdit2: TDBEdit
+          Left = 32
+          Height = 25
+          Top = 176
+          Width = 96
+          DataField = 'qt_produto'
+          DataSource = dsOrcamentoItem
+          Alignment = taRightJustify
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 0
+          ParentFont = False
           TabOrder = 3
+        end
+        object DBEdit3: TDBEdit
+          Left = 136
+          Height = 25
+          Top = 176
+          Width = 203
+          DataField = 'vl_unitario'
+          DataSource = dsOrcamentoItem
+          ReadOnly = True
+          Alignment = taRightJustify
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 4
+        end
+        object Label3: TLabel
+          Left = 32
+          Height = 18
+          Top = 24
+          Width = 211
+          Caption = 'Adicionar item ao Orçamento: '
+        end
+        object Label4: TLabel
+          Left = 32
+          Height = 18
+          Top = 88
+          Width = 65
+          Caption = 'Produto: '
+        end
+        object Label5: TLabel
+          Left = 32
+          Height = 18
+          Top = 152
+          Width = 55
+          Caption = 'Quant. :'
+        end
+        object Label6: TLabel
+          Left = 136
+          Height = 18
+          Top = 152
+          Width = 103
+          Caption = 'Valor Unitário: '
+        end
+        object DBComboBox1: TDBComboBox
+          Left = 32
+          Height = 25
+          Top = 48
+          Width = 211
+          DataField = 'orcamentoid'
+          DataSource = dsOrcamentoItem
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -15
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          ItemHeight = 17
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 5
         end
       end
     end
+  end
+  object dsOrcamento: TDataSource[1]
+    DataSet = qryOrcamento
+    Left = 968
+    Top = 176
+  end
+  object qryOrcamento: TZQuery[2]
+    Connection = DataModule1.ZConnection1
+    UpdateObject = updtOrcamento
+    SQL.Strings = (
+      'SELECT * FROM ORCAMENTO'
+      ''
+    )
+    Params = <>
+    Left = 968
+    Top = 112
+  end
+  object updtOrcamento: TZUpdateSQL[3]
+    DeleteSQL.Strings = (
+      'DELETE FROM ORCAMENTO_ITEM'
+      'WHERE'
+      '  ORCAMENTO_ITEM.orcamentoid = :OLD_orcamentoid'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO ORCAMENTO_ITEM'
+      '  (orcamentoid, produtoid, produtodesc, qt_produto, vl_unitario, vl_total)'
+      'VALUES'
+      '  (:orcamentoid, :produtoid, :produtodesc, :qt_produto, :vl_unitario, :vl_total)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE ORCAMENTO_ITEM SET'
+      '  orcamentoid = :orcamentoid,'
+      '  produtoid = :produtoid,'
+      '  produtodesc = :produtodesc,'
+      '  qt_produto = :qt_produto,'
+      '  vl_unitario = :vl_unitario,'
+      '  vl_total = :vl_total'
+      'WHERE'
+      '  ORCAMENTO_ITEM.orcamentoid = :OLD_orcamentoid'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 968
+    Top = 48
+    ParamData = <    
+      item
+        Name = 'orcamentoid'
+      end    
+      item
+        Name = 'produtoid'
+      end    
+      item
+        Name = 'produtodesc'
+      end    
+      item
+        Name = 'qt_produto'
+      end    
+      item
+        Name = 'vl_unitario'
+      end    
+      item
+        Name = 'vl_total'
+      end    
+      item
+        Name = 'OLD_orcamentoid'
+      end>
+  end
+  object dsOrcamentoItem: TDataSource[4]
+    DataSet = qryOrcamentoItem
+    Left = 864
+    Top = 176
+  end
+  object qryOrcamentoItem: TZQuery[5]
+    Connection = DataModule1.ZConnection1
+    UpdateObject = updtOrcamento
+    SQL.Strings = (
+      'SELECT * FROM ORCAMENTO_ITEM'
+    )
+    Params = <>
+    Left = 864
+    Top = 112
+  end
+  object updtOrcamentoItem: TZUpdateSQL[6]
+    UseSequenceFieldForRefreshSQL = False
+    Left = 864
+    Top = 48
   end
 end

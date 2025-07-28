@@ -39,6 +39,7 @@ object FmainMenu: TFmainMenu
       Caption = 'Vendas'
       object mnCadOrcamentos: TMenuItem
         Caption = 'Orçamentos'
+        OnClick = mnCadOrcamentosClick
       end
     end
     object mnRelatorios: TMenuItem

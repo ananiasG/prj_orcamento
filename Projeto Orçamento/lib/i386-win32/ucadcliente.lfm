@@ -53,6 +53,31 @@ inherited FCadModelo3: TFCadModelo3
           Width = 1022
           AlternateColor = clMenuBar
           AutoFillColumns = True
+          Columns = <          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'ID'
+              Width = 248
+              FieldName = 'clienteid'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Tipo'
+              Width = 247
+              FieldName = 'tipo_cliente'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'CPF/CNPJ'
+              Width = 247
+              FieldName = 'cpf_cnpj_cliente'
+            end          
+            item
+              PickList.Strings = (              )
+              Title.Caption = 'Nome'
+              Width = 247
+              FieldName = 'nome_cliente'
+            end>
           DataSource = dsClientes
           Font.Height = -13
           Font.Style = [fsItalic]
@@ -196,6 +221,7 @@ inherited FCadModelo3: TFCadModelo3
   object qryClientes: TZQuery[1]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtClientes
+    Active = True
     SQL.Strings = (
       'SELECT'
       '  CLIENTEID,'
