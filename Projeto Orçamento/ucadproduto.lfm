@@ -1,8 +1,9 @@
 inherited FCadModelo4: TFCadModelo4
   Caption = 'Cadastro de Produtos'
-  OnCreate = FormCreate
   OnShow = FormShow
   inherited pcModelo: TPageControl
+    ActivePage = pgCadastrar
+    TabIndex = 1
     inherited pgPesquisar: TTabSheet
       Font.Style = []
       ParentFont = False
@@ -267,22 +268,6 @@ inherited FCadModelo4: TFCadModelo4
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object dbCBStatus: TDBComboBox
-            Left = 40
-            Height = 26
-            Top = 152
-            Width = 125
-            DataField = 'status_produto'
-            DataSource = dsProduto
-            ItemHeight = 18
-            Items.Strings = (
-              'ATIVO'
-              'INATIVO'
-              ''
-            )
-            MaxLength = 0
-            TabOrder = 1
-          end
           object Label6: TLabel
             Left = 216
             Height = 18
@@ -297,15 +282,45 @@ inherited FCadModelo4: TFCadModelo4
             Font.Style = [fsBold]
             ParentFont = False
           end
-          object DBComboBox1: TDBComboBox
+          object DBLookupComboBox1: TDBLookupComboBox
             Left = 216
-            Height = 26
+            Height = 25
             Top = 152
             Width = 136
-            DataField = 'ds_categoria_produto'
+            DataField = 'categoriaprodutoid'
             DataSource = dsProduto
-            ItemHeight = 18
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            KeyField = 'categoriaprodutoid'
+            ListField = 'ds_categoria_produto'
+            ListFieldIndex = 0
+            ListSource = dsCategorias
+            LookupCache = False
+            ParentFont = False
+            TabOrder = 1
+          end
+          object DBComboBox1: TDBComboBox
+            Left = 40
+            Height = 25
+            Top = 152
+            Width = 136
+            DataField = 'status_produto'
+            DataSource = dsProduto
+            Font.CharSet = ANSI_CHARSET
+            Font.Height = -15
+            Font.Name = 'Arial'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
+            ItemHeight = 17
+            Items.Strings = (
+              'Ativo'
+              'Inativo'
+            )
             MaxLength = 0
+            ParentFont = False
             TabOrder = 2
           end
         end
@@ -314,12 +329,14 @@ inherited FCadModelo4: TFCadModelo4
   end
   object dsProduto: TDataSource[1]
     DataSet = qryProduto
-    Left = 920
-    Top = 280
+    Left = 944
+    Top = 288
   end
   object qryProduto: TZQuery[2]
     Connection = DataModule1.ZConnection1
+    AfterPost = qryProdutoAfterPost
     UpdateObject = updtProduto
+    Active = True
     SQL.Strings = (
       'SELECT'
       '  P.PRODUTOID,'
@@ -335,8 +352,8 @@ inherited FCadModelo4: TFCadModelo4
       'LEFT JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID;'
     )
     Params = <>
-    Left = 920
-    Top = 208
+    Left = 944
+    Top = 224
     object qryProdutoprodutoid: TZIntegerField
       FieldKind = fkData
       FieldName = 'produtoid'
@@ -371,7 +388,7 @@ inherited FCadModelo4: TFCadModelo4
       Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
+      ReadOnly = True
       Required = True
       Size = 50
     end
@@ -445,8 +462,8 @@ inherited FCadModelo4: TFCadModelo4
       '  PRODUTO.produtoid = :OLD_produtoid'
     )
     UseSequenceFieldForRefreshSQL = False
-    Left = 920
-    Top = 144
+    Left = 944
+    Top = 152
     ParamData = <    
       item
         Name = 'categoriaprodutoid'
@@ -472,12 +489,14 @@ inherited FCadModelo4: TFCadModelo4
   end
   object qryCategorias: TZQuery[4]
     Connection = DataModule1.ZConnection1
+    UpdateObject = updtCategorias
+    Active = True
     SQL.Strings = (
-      'SELECT categoriaprodutoid, DS_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO ORDER BY DS_CATEGORIA_PRODUTO'
+      'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO, INFO_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO;'
     )
     Params = <>
-    Left = 840
-    Top = 208
+    Left = 816
+    Top = 216
     object qryCategoriasds_categoria_produto: TZRawStringField
       FieldKind = fkData
       FieldName = 'ds_categoria_produto'
@@ -497,5 +516,44 @@ inherited FCadModelo4: TFCadModelo4
       ReadOnly = True
       Required = False
     end
+  end
+  object dsCategorias: TDataSource[5]
+    DataSet = qryCategorias
+    Left = 816
+    Top = 280
+  end
+  object updtCategorias: TZUpdateSQL[6]
+    DeleteSQL.Strings = (
+      'DELETE FROM CATEGORIA_PRODUTO'
+      'WHERE'
+      '  ((CATEGORIA_PRODUTO.categoriaprodutoid IS NULL AND :OLD_categoriaprodutoid IS NULL) OR (CATEGORIA_PRODUTO.categoriaprodutoid = :OLD_categoriaprodutoid))'
+    )
+    InsertSQL.Strings = (
+      'INSERT INTO CATEGORIA_PRODUTO'
+      '  (categoriaprodutoid, ds_categoria_produto, info_categoria_produto)'
+      'VALUES'
+      '  (:categoriaprodutoid, :ds_categoria_produto, :info_categoria_produto)'
+    )
+    ModifySQL.Strings = (
+      'UPDATE CATEGORIA_PRODUTO SET'
+      '  categoriaprodutoid = :categoriaprodutoid,'
+      '  ds_categoria_produto = :ds_categoria_produto,'
+      '  info_categoria_produto = :info_categoria_produto'
+      'WHERE'
+      '  ((CATEGORIA_PRODUTO.categoriaprodutoid IS NULL AND :OLD_categoriaprodutoid IS NULL) OR (CATEGORIA_PRODUTO.categoriaprodutoid = :OLD_categoriaprodutoid))'
+    )
+    UseSequenceFieldForRefreshSQL = False
+    Left = 816
+    Top = 144
+    ParamData = <    
+      item
+        Name = 'categoriaprodutoid'
+      end    
+      item
+        Name = 'ds_categoria_produto'
+      end    
+      item
+        Name = 'info_categoria_produto'
+      end>
   end
 end

@@ -151,7 +151,7 @@ inherited FCadModelo3: TFCadModelo3
           Font.Name = 'Arial'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
-          MaxLength = 0
+          MaxLength = 100
           ParentFont = False
           TabOrder = 0
         end
@@ -193,7 +193,7 @@ inherited FCadModelo3: TFCadModelo3
           Font.Name = 'Arial'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
-          MaxLength = 0
+          MaxLength = 18
           ParentFont = False
           TabOrder = 2
         end
@@ -221,6 +221,7 @@ inherited FCadModelo3: TFCadModelo3
   object qryClientes: TZQuery[1]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtClientes
+    Active = True
     SQL.Strings = (
       'SELECT'
       '  CLIENTEID,'

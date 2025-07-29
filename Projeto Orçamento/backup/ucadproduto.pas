@@ -14,9 +14,9 @@ type
 
   TFCadModelo4 = class(TFCadModelo)
     cbOptnPesquisa: TComboBox;
+    DBLookupComboBox1: TDBLookupComboBox;
     DBComboBox1: TDBComboBox;
     dsProduto: TDataSource;
-    dbCBStatus: TDBComboBox;
     dbEditNome: TDBEdit;
     dbEditObs: TDBEdit;
     dbEditValorV: TDBEdit;
@@ -28,9 +28,6 @@ type
     Label6: TLabel;
     Panel6: TPanel;
     Panel7: TPanel;
-    qryCategorias: TZQuery;
-    qryCategoriascategoriaprodutoid: TZIntegerField;
-    qryCategoriasds_categoria_produto: TZRawStringField;
     qryProduto: TZQuery;
     qryProdutocategoriaprodutoid: TZIntegerField;
     qryProdutods_categoria_produto: TZRawStringField;
@@ -48,9 +45,9 @@ type
     procedure btInserirClick(Sender: TObject);
     procedure btSairClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
+    procedure qryProdutoAfterPost(DataSet: TDataSet);
   private
 
   public
@@ -75,19 +72,15 @@ begin
   btExcluir.Enabled := False;
   BitBtn2.Enabled := True;
   BitBtn4.Enabled := True;
+
 end;
 
 procedure TFCadModelo4.BitBtn2Click(Sender: TObject); //salvar
-var
-  id: Integer;
 begin
-  id := Integer(DBComboBox1.Items.Objects[DBComboBox1.ItemIndex]);
-  qryProdutocategoriaprodutoid.AsInteger := id;
   qryProduto.Open;
+  qryProdutodt_cadastro_produto.AsDateTime := Date;
   qryProduto.Post;
   pcModelo.ActivePage:= pgPesquisar;
-
-
 end;
 
 procedure TFCadModelo4.BitBtn3Click(Sender: TObject); //editar
@@ -125,22 +118,6 @@ begin
   BitBtn2.Enabled := false;
   BitBtn4.Enabled := True;
   pcModelo.ActivePage := pgCadastrar;
-end;
-
-procedure TFCadModelo4.FormCreate(Sender: TObject);
-begin
-  DBComboBox1.Items.Clear;
-  qryCategorias.Open;
-
-  qryCategorias.First;
-  while not qryCategorias.EOF do
-  begin
-    DBComboBox1.Items.AddObject(qryCategorias.FieldByName('DS_CATEGORIA_PRODUTO').AsString,
-                      TObject(qryCategorias.FieldByName('categoriaprodutoid').AsInteger));
-    qryCategorias.Next;
-  end;
-
-  qryCategorias.Close;
 end;
 
 procedure TFCadModelo4.FormShow(Sender: TObject);
@@ -208,6 +185,17 @@ begin
     );
   end;
 
+  qryProduto.Open;
+end;
+
+procedure TFCadModelo4.qryProdutoAfterPost(DataSet: TDataSet);
+begin
+  qryProduto.Close;
+  qryProduto.SQL.Clear;
+  qryProduto.SQL.Add('SELECT P.PRODUTOID, P.CATEGORIAPRODUTOID, P.DS_PRODUTO, C.DS_CATEGORIA_PRODUTO, ' +
+                           'P.OBS_PRODUTO, P.STATUS_PRODUTO, P.VL_VENDA_PRODUTO, P.DT_CADASTRO_PRODUTO ' +
+                           'FROM PRODUTO P LEFT JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID' +
+                           'order by produtoid');
   qryProduto.Open;
 end;
 
