@@ -2,8 +2,6 @@ inherited FCadModelo4: TFCadModelo4
   Caption = 'Cadastro de Produtos'
   OnShow = FormShow
   inherited pcModelo: TPageControl
-    ActivePage = pgCadastrar
-    TabIndex = 1
     inherited pgPesquisar: TTabSheet
       Font.Style = []
       ParentFont = False
@@ -490,7 +488,6 @@ inherited FCadModelo4: TFCadModelo4
   object qryCategorias: TZQuery[4]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtCategorias
-    Active = True
     SQL.Strings = (
       'SELECT CATEGORIAPRODUTOID, DS_CATEGORIA_PRODUTO, INFO_CATEGORIA_PRODUTO FROM CATEGORIA_PRODUTO;'
     )

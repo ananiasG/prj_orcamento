@@ -1,65 +1,66 @@
 inherited FCadModelo5: TFCadModelo5
-  Height = 566
-  Width = 1023
-  ClientHeight = 566
-  ClientWidth = 1023
+  Height = 563
+  Width = 1120
+  Align = alCustom
+  ClientHeight = 563
+  ClientWidth = 1120
   Font.CharSet = ANSI_CHARSET
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   Font.Style = [fsItalic]
   inherited pcModelo: TPageControl
     Height = 570
-    Width = 1030
+    Width = 1120
     ActivePage = pgCadastrar
     Constraints.MinHeight = 570
     Constraints.MinWidth = 1030
     TabIndex = 1
     inherited pgPesquisar: TTabSheet
       ClientHeight = 539
-      ClientWidth = 1022
+      ClientWidth = 1112
       inherited Panel1: TPanel
         Height = 450
-        Width = 962
+        Width = 1052
         ClientHeight = 450
-        ClientWidth = 962
+        ClientWidth = 1052
         inherited Panel2: TPanel
-          Width = 950
-          ClientWidth = 950
+          Width = 1040
+          ClientWidth = 1040
         end
         inherited DBGrid1: TDBGrid
           Cursor = crDrag
           Height = 380
-          Width = 950
+          Width = 1040
           AutoFillColumns = True
           Columns = <          
             item
               PickList.Strings = (              )
               Title.Caption = 'orcamentoid'
-              Width = 184
+              Width = 202
               FieldName = 'orcamentoid'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'clienteid'
-              Width = 184
+              Width = 202
               FieldName = 'clienteid'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'dt_orcamento'
-              Width = 183
+              Width = 201
               FieldName = 'dt_orcamento'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'dt_validade_orcamento'
-              Width = 183
+              Width = 201
               FieldName = 'dt_validade_orcamento'
             end          
             item
               PickList.Strings = (              )
               Title.Caption = 'vl_total_orcamento'
-              Width = 183
+              Width = 201
               FieldName = 'vl_total_orcamento'
             end>
           DataSource = dsOrcamento
@@ -71,8 +72,8 @@ inherited FCadModelo5: TFCadModelo5
       end
       inherited Panel5: TPanel
         Top = 484
-        Width = 1012
-        ClientWidth = 1012
+        Width = 1102
+        ClientWidth = 1102
         Color = clMenuBar
         ParentBackground = False
         ParentColor = False
@@ -86,11 +87,11 @@ inherited FCadModelo5: TFCadModelo5
     end
     inherited pgCadastrar: TTabSheet
       ClientHeight = 539
-      ClientWidth = 1022
+      ClientWidth = 1112
       inherited Panel3: TPanel
         Top = 484
-        Width = 1012
-        ClientWidth = 1012
+        Width = 1102
+        ClientWidth = 1102
         Color = clMenuBar
         ParentBackground = False
         ParentColor = False
@@ -114,13 +115,13 @@ inherited FCadModelo5: TFCadModelo5
         Left = 10
         Height = 91
         Top = 5
-        Width = 1002
+        Width = 1092
         Align = alTop
         BorderSpacing.Left = 10
         BorderSpacing.Top = 5
         BorderSpacing.Right = 10
         ClientHeight = 91
-        ClientWidth = 1002
+        ClientWidth = 1092
         Color = clMenu
         ParentBackground = False
         ParentColor = False
@@ -129,7 +130,7 @@ inherited FCadModelo5: TFCadModelo5
           Left = 6
           Height = 79
           Top = 6
-          Width = 650
+          Width = 740
           Align = alLeft
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderSpacing.Left = 5
@@ -138,7 +139,7 @@ inherited FCadModelo5: TFCadModelo5
           BevelColor = clWindowFrame
           BorderStyle = bsSingle
           ClientHeight = 75
-          ClientWidth = 646
+          ClientWidth = 736
           Color = clBtnFace
           ParentBackground = False
           ParentColor = False
@@ -146,7 +147,7 @@ inherited FCadModelo5: TFCadModelo5
           object Label7: TLabel
             Left = 32
             Height = 19
-            Top = 25
+            Top = 31
             Width = 65
             Caption = 'Cliente: '
             Font.CharSet = ANSI_CHARSET
@@ -158,7 +159,7 @@ inherited FCadModelo5: TFCadModelo5
             ParentFont = False
           end
           object DBLookupComboBox1: TDBLookupComboBox
-            Left = 96
+            Left = 102
             Height = 26
             Top = 24
             Width = 216
@@ -174,7 +175,7 @@ inherited FCadModelo5: TFCadModelo5
           end
         end
         object Panel11: TPanel
-          Left = 664
+          Left = 754
           Height = 79
           Top = 6
           Width = 337
@@ -227,10 +228,10 @@ inherited FCadModelo5: TFCadModelo5
         end
       end
       object DBGrid2: TDBGrid[2]
-        Left = 272
+        Left = 280
         Height = 368
         Top = 106
-        Width = 740
+        Width = 822
         Align = alRight
         AutoFillColumns = True
         BorderSpacing.Left = 5
@@ -241,32 +242,32 @@ inherited FCadModelo5: TFCadModelo5
         Columns = <        
           item
             Title.Caption = 'Orçamento'
-            Width = 118
+            Width = 132
             FieldName = 'orcamentoid'
           end        
           item
             Title.Caption = 'Items Id'
-            Width = 118
+            Width = 132
             FieldName = 'orcamentoitemid'
           end        
           item
             Title.Caption = 'Descrição'
-            Width = 118
+            Width = 132
             FieldName = 'produtodesc'
           end        
           item
             Title.Caption = 'Quantidade'
-            Width = 118
+            Width = 131
             FieldName = 'qt_produto'
           end        
           item
             Title.Caption = 'Valor Unitário'
-            Width = 118
+            Width = 131
             FieldName = 'vl_unitario'
           end        
           item
             Title.Caption = 'Valor Total'
-            Width = 117
+            Width = 131
             FieldName = 'vl_total'
           end>
         DataSource = dsOrcamentoItem
@@ -325,7 +326,7 @@ inherited FCadModelo5: TFCadModelo5
           Font.Name = 'Arial'
           Font.Pitch = fpVariable
           Font.Quality = fqDraft
-          MaxLength = 0
+          MaxLength = 50
           ParentFont = False
           TabOrder = 2
         end
@@ -345,6 +346,7 @@ inherited FCadModelo5: TFCadModelo5
           MaxLength = 0
           ParentFont = False
           TabOrder = 3
+          OnChange = DBEdit2Change
         end
         object DBEdit3: TDBEdit
           Left = 131
@@ -363,6 +365,7 @@ inherited FCadModelo5: TFCadModelo5
           MaxLength = 0
           ParentFont = False
           TabOrder = 4
+          OnChange = DBEdit3Change
         end
         object Label3: TLabel
           Left = 24
@@ -409,13 +412,30 @@ inherited FCadModelo5: TFCadModelo5
           ParentFont = False
           TabOrder = 5
         end
+        object DBEdit4: TDBEdit
+          Left = 24
+          Height = 30
+          Top = 264
+          Width = 211
+          DataField = 'vl_total'
+          DataSource = dsOrcamentoItem
+          Alignment = taRightJustify
+          Font.CharSet = ANSI_CHARSET
+          Font.Height = -19
+          Font.Name = 'Arial'
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 6
+        end
       end
     end
   end
   object dsOrcamento: TDataSource[1]
     DataSet = qryOrcamento
-    Left = 968
-    Top = 512
+    Left = 616
+    Top = 184
   end
   object qryOrcamento: TZQuery[2]
     Connection = DataModule1.ZConnection1
@@ -426,8 +446,8 @@ inherited FCadModelo5: TFCadModelo5
       ''
     )
     Params = <>
-    Left = 968
-    Top = 448
+    Left = 616
+    Top = 120
     object qryOrcamentoorcamentoid: TZIntegerField
       FieldKind = fkData
       FieldName = 'orcamentoid'
@@ -503,8 +523,8 @@ inherited FCadModelo5: TFCadModelo5
       '  ORCAMENTO_ITEM.orcamentoid = :OLD_orcamentoid'
     )
     UseSequenceFieldForRefreshSQL = False
-    Left = 968
-    Top = 384
+    Left = 616
+    Top = 56
     ParamData = <    
       item
         Name = 'orcamentoid'
@@ -529,14 +549,14 @@ inherited FCadModelo5: TFCadModelo5
       end>
   end
   object dsOrcamentoItem: TDataSource[4]
-    AutoEdit = False
     DataSet = qryOrcamentoItem
-    Left = 864
-    Top = 512
+    Left = 512
+    Top = 184
   end
   object qryOrcamentoItem: TZQuery[5]
     Connection = DataModule1.ZConnection1
     UpdateObject = updtOrcamento
+    Active = True
     SQL.Strings = (
       'SELECT * FROM ORCAMENTO_ITEM WHERE ORCAMENTOID = :ID'
     )
@@ -544,8 +564,8 @@ inherited FCadModelo5: TFCadModelo5
       item
         Name = 'ID'
       end>
-    Left = 864
-    Top = 448
+    Left = 512
+    Top = 120
     ParamData = <    
       item
         Name = 'ID'
@@ -632,7 +652,7 @@ inherited FCadModelo5: TFCadModelo5
   end
   object updtOrcamentoItem: TZUpdateSQL[6]
     UseSequenceFieldForRefreshSQL = False
-    Left = 864
-    Top = 384
+    Left = 512
+    Top = 56
   end
 end

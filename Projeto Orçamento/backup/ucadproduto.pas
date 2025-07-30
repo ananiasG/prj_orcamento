@@ -194,7 +194,7 @@ begin
   qryProduto.SQL.Clear;
   qryProduto.SQL.Add('SELECT P.PRODUTOID, P.CATEGORIAPRODUTOID, P.DS_PRODUTO, C.DS_CATEGORIA_PRODUTO, ' +
                            'P.OBS_PRODUTO, P.STATUS_PRODUTO, P.VL_VENDA_PRODUTO, P.DT_CADASTRO_PRODUTO ' +
-                           'FROM PRODUTO P LEFT JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID' +
+                           'FROM PRODUTO P LEFT JOIN CATEGORIA_PRODUTO C ON P.CATEGORIAPRODUTOID = C.CATEGORIAPRODUTOID ' +
                            'order by produtoid');
   qryProduto.Open;
 end;

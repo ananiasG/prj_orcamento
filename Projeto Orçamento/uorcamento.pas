@@ -23,6 +23,7 @@ type
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     bdDataCad: TDBEdit;
+    DBEdit4: TDBEdit;
     DBEdit6: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     Label3: TLabel;
@@ -63,6 +64,8 @@ type
     procedure btSairClick(Sender: TObject);
     procedure btAddClick(Sender: TObject);
     procedure btDelClick(Sender: TObject);
+    procedure DBEdit2Change(Sender: TObject);
+    procedure DBEdit3Change(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure qryOrcamentoAfterPost(DataSet: TDataSet);
   private
@@ -81,27 +84,36 @@ implementation
 { TFCadModelo5 }
 
 procedure TFCadModelo5.btInserirClick(Sender: TObject);
-var
-  dataAtual, dataValidade: TDate;
 begin
   pcModelo.ActivePage := pgCadastrar;
-  dataAtual := Date;
-  dataValidade := IncMonth(dataAtual, 3);
-
-  DataCad.Text := DateToStr(dataAtual);
-  DataVal.Text := DateToStr(dataValidade);
 
   qryOrcamento.Insert;
   BitBtn3.Enabled := False;
   btExcluir.Enabled := False;
   BitBtn2.Enabled := True;
   BitBtn4.Enabled := True;
+
+  qryOrcamentoItem.Insert;
 end;
 
-procedure TFCadModelo5.BitBtn2Click(Sender: TObject); //salvar
+procedure TFCadModelo5.BitBtn2Click(Sender: TObject);  //salvar
+var
+  aux: Double;
 begin
+  qryOrcamentodt_orcamento.AsDateTime := Date;
+  qryOrcamentodt_validade_orcamento.AsDateTime := IncMonth(Date, 3);
+
+  aux := 0;
+  qryOrcamentoItem.First;
+  while not qryOrcamentoItem.Eof do
+  begin
+    aux := aux + qryOrcamentoItem.FieldByName('vl_total').AsFloat;
+    qryOrcamentoItem.Next;
+  end;
+  qryOrcamentovl_total_orcamento.AsFloat := aux;
+
   qryOrcamento.Post;
-  qryOrcamento.Open;
+  qryOrcamento.Refresh;
   pcModelo.ActivePage:= pgPesquisar;
 end;
 
@@ -134,7 +146,6 @@ end;
 
 procedure TFCadModelo5.btAddClick(Sender: TObject);  //add item
 begin
-  qryOrcamentoItem.Close;
   qryOrcamentoItem.Insert;
   qryOrcamentoItem.Post;
   qryOrcamentoItem.Open;
@@ -143,6 +154,20 @@ end;
 procedure TFCadModelo5.btDelClick(Sender: TObject);   //excluir item
 begin
   qryOrcamentoitem.Delete;
+end;
+
+procedure TFCadModelo5.DBEdit2Change(Sender: TObject);
+var
+  aux: Double;
+begin
+  aux := qryOrcamentoItemvl_total.AsFloat;
+  qryOrcamentoItemvl_total.AsFloat := aux * qryOrcamentoItemqt_produto.AsInteger;
+
+end;
+
+procedure TFCadModelo5.DBEdit3Change(Sender: TObject);
+begin
+  DBEdit2Change(Sender);
 end;
 
 procedure TFCadModelo5.DBGrid1DblClick(Sender: TObject);
